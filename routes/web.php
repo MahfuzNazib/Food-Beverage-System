@@ -3,11 +3,14 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Frontend\WebController;
 use Illuminate\Support\Facades\Route;
 
+// Landing page routes
+Route::get('/', [WebController::class, 'home'])->name('home');
 
 // Login Route Start
-Route::get('/', [LoginController::class, 'login_show'])->name('login.show');
+Route::get('/login', [LoginController::class, 'login_show'])->name('login.show');
 Route::post('/do_login', [LoginController::class, 'do_login'])->name('do.login');
 // Login Route End
 
@@ -28,6 +31,6 @@ Route::group(['prefix' => 'Dashboard', 'middleware' => 'auth'], function () {
 	require_once 'backend/meal_management.php';
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+// Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
