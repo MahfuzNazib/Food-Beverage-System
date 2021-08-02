@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
-use Exception;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 
-class BrandController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        if (can('brands')) {
-            return view('backend.modules.brand_management.index');
+        if (can('categories')) {
+            return view('backend.modules.category_management.index');
         } else {
             return view('errors.404');
         }
@@ -27,21 +27,25 @@ class BrandController extends Controller
 
     public function data()
     {
-        if (can('brand')) {
-            $brand = Brand::orderBy('id', 'desc')->get();
-            return DataTables::of($brand)
+        if (can('categories')) {
+            $category = Category::orderBy('id', 'desc')->get();
+            return DataTables::of($category)
                 ->rawColumns(['action', 'is_active'])
-                ->editColumn('is_active', function (Brand $brand) {
-                    if ($brand->is_active == true) {
+                ->editColumn('is_active', function (Category $category) {
+                    if ($category->is_active == true) {
                         return '<p class="badge badge-success">Active</p>';
                     } else {
                         return '<p class="badge badge-danger">Inactive</p>';
                     }
                 })
-                ->addColumn('action', function (Brand $brand) {
+                ->addColumn('action', function (Category $category) {
                     return '
-                    <a data-toggle="modal" data-content="' . route('brand.edit', $brand->id) . '"  href="#modal1" >
+                    <a data-toggle="modal" data-content="' . route('category.edit', $category->id) . '"  href="#modal1" >
                         <button class="btn btn-info btn-sm">Edit</button>
+                    </a>
+
+                    <a data-toggle="modal" data-content="' . route('category.show', $category->id) . '"  href="#modal1" >
+                        <button class="btn btn-success btn-sm">View</button>
                     </a>
                 ';
                 })
@@ -51,7 +55,6 @@ class BrandController extends Controller
         }
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +62,11 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('backend.modules.brand_management.modals.inputs');
+        if (can('categories')) {
+            return view('backend.modules.category_management.modals.inputs');
+        } else {
+            return view('errors.404');
+        }
     }
 
     /**
@@ -70,12 +77,12 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        if (can('brand')) {
+
+        if (can('categories')) {
+
             $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                'slug' => 'required|unique:brands',
-                'position' => 'required|unique:brands',
-                'image' => 'required',
+                'name' => 'required|unique:categories',
+                'position' => 'required|unique:categories',
             ]);
 
             if ($validator->fails()) {
@@ -84,24 +91,11 @@ class BrandController extends Controller
                 try {
                     $data = $request->all();
 
-                    // Image Processing Start
-                    if ($request->hasFile('image')) {
-                        $file = $request->file('image');
-                        $extension = $file->getClientOriginalExtension();
-                        $filename = time() . '.' . $extension;
+                    $data['slug'] = Str::slug($request->name);
+                    $store_category = Category::storeNewCategory($data);
 
-                        $file->move('frontend/images/brands/', $filename);
-                        $data['image'] = $filename;
-
-                    } else {
-                        $data['image'] = null;
-                    }
-                    // Image Processing End
-
-                    $store_brand = Brand::storeNewBrand($data);
-
-                    if ($store_brand) {
-                        return response()->json(['success' => 'Brand Successfully Created'], 200);
+                    if ($store_category) {
+                        return response()->json(['success' => 'Ctaegory Successfully Updated'], 200);
                     } else {
                         return response()->json(['warning' => 'Something went wrong.Try Next time'], 200);
                     }
@@ -110,7 +104,7 @@ class BrandController extends Controller
                 }
             }
         } else {
-            return view('errors.404');
+
         }
     }
 
@@ -122,7 +116,8 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        return view('backend.modules.category_management.modals.view', compact('category'));
     }
 
     /**
@@ -133,9 +128,9 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        if (can('brand')) {
-            $editRow = Brand::find($id);
-            return view('backend.modules.brand_management.modals.inputs', compact('editRow'));
+        if (can('categories')) {
+            $editRow = Category::find($id);
+            return view('backend.modules.category_management.modals.inputs', compact('editRow'));
         } else {
             return view('errors.404');
         }
@@ -150,40 +145,26 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (can('brand')) {
-            $brand = Brand::find($id);
+        if (can('categories')) {
+            $brand = Category::find($id);
 
             $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                'slug' => 'sometimes|required|unique:brands,slug,' . $id,
-                'position' => 'sometimes|required|numeric|unique:brands,position,' . $id,
-                'image' => 'required,' . $id,
+                'name' => 'required|unique:categories,name,' .$id,
+                'position' => 'sometimes|required|numeric|unique:categories,position,' . $id,
             ]);
 
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()], 422);
             } else {
                 try {
+
                     $data = $request->all();
+                    $data['slug'] = Str::slug($request->name);
 
-                    // Image Processing Start
-                    if ($request->hasFile('image')) {
-                        $file = $request->file('image');
-                        $extension = $file->getClientOriginalExtension();
-                        $filename = time() . '.' . $extension;
+                    $update_category = Category::updateCategory($data, $id);
 
-                        $file->move('frontend/images/brands/', $filename);
-                        $data['image'] = $filename;
-
-                    } else {
-                        $data['image'] = $brand->image;
-                    }
-                    // Image Processing End
-
-                    $update_brand = Brand::updateBrand($data, $id);
-
-                    if ($update_brand) {
-                        return response()->json(['success' => 'Brand Successfully Updated'], 200);
+                    if ($update_category) {
+                        return response()->json(['success' => 'Category Successfully Updated'], 200);
                     } else {
                         return response()->json(['warning' => 'Something went wrong.Try Next time'], 200);
                     }
