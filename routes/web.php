@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\WebController;
 use Illuminate\Support\Facades\Route;
@@ -24,13 +25,11 @@ Route::post('/do-logout', [LogoutController::class, 'do_logout'])->name('do.logo
 Route::group(['prefix' => 'Dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-	//user management route 
     require_once 'backend/user_management.php';
-
-	// Role Management Route 
 	require_once 'backend/role_management.php';
-
-	// Meal Management Route 
 	require_once 'backend/meal_management.php';
+	require_once 'backend/brand_management.php';
+	// Route::get("/brand", [BrandController::class, 'index'])->name('brand.index'); 
+
 });
 

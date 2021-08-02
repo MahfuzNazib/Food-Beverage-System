@@ -109,7 +109,7 @@
                                 <li><a href="full-width-grid.html">Full Width Gallery</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
                         <li><a href="{{ route('login.show') }}">SignIn</a></li>
 
                         <!-- RD Search-->

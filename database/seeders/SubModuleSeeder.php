@@ -42,7 +42,7 @@ class SubModuleSeeder extends Seeder
                 'name' => 'Brand',
                 'key' => 'brand',
                 'position' => 1,
-                'route' => 'user.all',
+                'route' => 'brand.index',
                 'module_id' => 2,
             ],
             [
@@ -50,7 +50,7 @@ class SubModuleSeeder extends Seeder
                 'name' => 'Categories',
                 'key' => 'categories',
                 'position' => 2,
-                'route' => 'user.all',
+                'route' => 'brand.cat',
                 'module_id' => 2,
             ],
             [
