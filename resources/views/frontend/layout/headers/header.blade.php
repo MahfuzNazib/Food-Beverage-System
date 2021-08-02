@@ -40,8 +40,8 @@
                 <div class="rd-navbar-nav-wrap">
                     <!-- RD Navbar Nav-->
                     <ul class="rd-navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="all-products.html">All Products</a>
+                        <li class="active"><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('all_products') }}">All Products</a>
                         </li>
 
                         <li><a href="#">All Category</a>
@@ -110,7 +110,7 @@
                                 <li><a href="full-width-grid.html">Full Width Gallery</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact-us.html">Contact Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
                         <!-- RD Search-->
                         <li class="rd-navbar-search">
                             <!-- <span> <img src="{{ 'frontend' }}/images/icons/search.png" class="icon-size"> </span> -->
