@@ -37,8 +37,26 @@ class ModuleSeeder extends Seeder
                 'id' => 3,
                 'name' => 'Product Management',
                 'key' => 'product_management',
-                'icon' => 'ni ni-world',
+                'icon' => 'ni ni-bag-17',
                 'position' => 3,
+                'route' => null,
+            ],
+
+            [
+                'id' => 4,
+                'name' => 'Offer Management',
+                'key' => 'offer_management',
+                'icon' => 'ni ni-money-coins',
+                'position' => 4,
+                'route' => null,
+            ],
+
+            [
+                'id' => 5,
+                'name' => 'Order Management',
+                'key' => 'Order_management',
+                'icon' => 'ni ni-single-copy-04',
+                'position' => 5,
                 'route' => null,
             ],
         ]);

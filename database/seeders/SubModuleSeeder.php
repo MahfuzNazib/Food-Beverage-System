@@ -63,6 +63,34 @@ class SubModuleSeeder extends Seeder
             ],
             // Category & Brand End. Module Id 2 
 
+            // Product Strat. Module ID 3
+            [
+                'id' => 6,
+                'name' => 'Attribute',
+                'key' => 'attribute',
+                'position' => 1,
+                'route' => 'attribute.index',
+                'module_id' => 3,
+            ],
+            [
+                'id' => 7,
+                'name' => 'All Product',
+                'key' => 'all_product',
+                'position' => 2,
+                'route' => 'brand.index',
+                'module_id' => 3,
+            ],
+            [
+                'id' => 8,
+                'name' => 'Add New Product',
+                'key' => 'add_new_product',
+                'position' => 3,
+                'route' => 'brand.index',
+                'module_id' => 3,
+            ],
+            // Product End. Module ID 3
+
+
         ]);
     }
 }

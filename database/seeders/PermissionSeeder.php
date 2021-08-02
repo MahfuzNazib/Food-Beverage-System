@@ -61,6 +61,29 @@ class PermissionSeeder extends Seeder
             ],
 
             // Category Brand Permission End
+
+
+            // Product Permission Start
+            [
+                'id' => 8,
+                'key' => 'attribute',
+                'display_name' => 'Attribute',
+                'module_id' => 3,
+            ],
+            [
+                'id' => 9,
+                'key' => 'all_product',
+                'display_name' => 'All Product',
+                'module_id' => 3,
+            ],
+            [
+                'id' => 10,
+                'key' => 'add_new_product',
+                'display_name' => 'Add New Product',
+                'module_id' => 3,
+            ],
+            // Product Permission End
+
         ]);
     }
 }
