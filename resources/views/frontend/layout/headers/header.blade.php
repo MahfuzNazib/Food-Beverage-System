@@ -1,4 +1,3 @@
-<!-- Page Header-->
 <header class="page-head">
     <!-- RD Navbar-->
     <div class="rd-navbar-wrap">
@@ -12,16 +11,18 @@
                 <div class="row align-items-md-center justify-content-lg-between">
                     <div class="offset-xl-2 col-md-12 text-center col-lg-2 order-lg-2">
                         <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img
-                                    src="{{ asset('frontend') }}/images/logo-3.png" alt=""></a></div>
+                                    src="{{ 'frontend' }}/images/logo-3.png" alt=""></a></div>
                     </div>
                     <div class="col-md-12 text-lg-left col-xl-3 col-lg-4 order-lg-1">
                         <a class="text-middle text-gray preffix-left-10" href="#"><span> <img
-                                    src="{{ asset('frontend') }}/images/icons/location.png" height="22px" width="22px"> </span> 69 Halsey St,
-                            New York, Ny
+                                    src="{{ 'frontend' }}/images/icons/location.png" height="22px" width="22px">
+                            </span> 69
+                            Halsey St, New York, Ny
                             10002.</a></div>
                     <div class="offset-xl-2 col-md-12 text-lg-right col-xl-3 order-lg-3 col-lg-4">
-                        <span> <img src="{{ asset('frontend') }}/images/icons/watch.png" height="22px" width="22px"> </span><span
-                            class="text-middle text-gray preffix-left-10">Opening Hours: 08:00am–7:30pm</span>
+                        <span> <img src="{{ 'frontend' }}/images/icons/watch.png" height="22px" width="22px">
+                        </span><span class="text-middle text-gray preffix-left-10">Opening Hours:
+                            08:00am–7:30pm</span>
                     </div>
                 </div>
             </div>
@@ -112,7 +113,7 @@
                         <li><a href="contact-us.html">Contact Us</a></li>
                         <!-- RD Search-->
                         <li class="rd-navbar-search">
-                            <!-- <span> <img src="{{ asset('frontend') }}/images/icons/search.png" class="icon-size"> </span> -->
+                            <!-- <span> <img src="{{ 'frontend' }}/images/icons/search.png" class="icon-size"> </span> -->
                             <button
                                 class="rd-navbar-search-toggle icon rd-search-form-submit icon-xs fl-crisp-icons-search69 icon-gray"
                                 data-rd-navbar-toggle=".rd-search"></button>
@@ -129,12 +130,13 @@
                             </form>
                         </li>
                         <li class="rd-navbar-cart-wrap"><span class="rd-navbar-cart"><a class="icon icon-sm icon-gray"
-                                    href="shop-cart.html"><span> <img src="{{ asset('frontend') }}/images/icons/shopping-cart.png" height="25px"
-                                            width="25px"> </span><span class="text-bold">$124.00</span></a></span></li>
+                                    href="shop-cart.html"><span> <img
+                                            src="{{ 'frontend' }}/images/icons/shopping-cart.png" height="25px"
+                                            width="25px">
+                                    </span><span class="text-bold">$124.00</span></a></span></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
 </header>
-<!-- Page Content-->

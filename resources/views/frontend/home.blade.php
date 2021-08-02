@@ -1,7 +1,6 @@
 @extends('frontend.layout.web')
 @section('content')
 
-<!-- Fresh Organic Food-->
 <section class="section">
     <div class="swiper-container swiper-slider swiper-custom" data-height="35.10416666666667%" data-min-height="375px"
         data-index-bullet="false" data-slide-effect="fade" data-autoplay="5000">
@@ -130,8 +129,8 @@
             <div class="col-12">
                 <div class="unit product unit-lg unit-lg-horizontal unit-spacing-lg">
                     <div class="unit-left">
-                        <div class="product-image"><img class="img-responsive" src="{{ 'frontend' }}/images/home-05-526x404.png" alt=""
-                                width="526" height="404" />
+                        <div class="product-image"><img class="img-responsive"
+                                src="{{ 'frontend' }}/images/home-05-526x404.png" alt="" width="526" height="404" />
                         </div>
                     </div>
                     <div class="unit-body">
@@ -213,8 +212,9 @@
                             </div>
                             <div class="product-foot">
                                 <div class="btn btn-icon btn-icon-left btn-primary"><span> <img
-                                            src="{{ 'frontend' }}/images/icons/shopping-cart-w.png" class="icon-size"> </span>Add to cart
-                                </div>
+                                            src="{{ 'frontend' }}/images/icons/shopping-cart-w.png" class="icon-size">
+                                    </span>Add
+                                    to cart</div>
 
                             </div>
                         </div>
@@ -251,7 +251,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-06-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-06-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
 
                                 <div class="product-featured-title">
@@ -263,15 +264,16 @@
                                         class="product-price-old h7 text-light text-regular">$80.00</span></div>
                                 <div class="product-featured-block-hover"><a
                                         class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span> <img
-                                                src="{{ 'frontend' }}/images/icons/shopping-cart-w.png" class="icon-size"> </span>Add to
-                                        cart</a>
+                                                src="{{ 'frontend' }}/images/icons/shopping-cart-w.png"
+                                                class="icon-size"> </span>Add to cart</a>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-07-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-07-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -296,7 +298,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-08-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-08-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -322,7 +325,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-09-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-09-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -354,7 +358,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-15-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-15-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -379,7 +384,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-16-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-16-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -404,7 +410,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-17-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-17-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -430,7 +437,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-18-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-18-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -462,7 +470,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-19-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-19-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -487,7 +496,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-20-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-20-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -512,7 +522,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-21-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-21-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -538,7 +549,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-22-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-22-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -570,7 +582,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-23-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-23-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -595,7 +608,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-24-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-24-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -620,7 +634,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-25-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-25-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -645,7 +660,8 @@
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-26-270x204.png" alt="" width="270" height="204" />
+                                        src="{{ 'frontend' }}/images/home-26-270x204.png" alt="" width="270"
+                                        height="204" />
                                 </div>
                                 <div class="product-featured-rating"><span
                                         class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -706,10 +722,14 @@
                         data-swipe="true" data-items="1" data-xs-items="1" data-lg-items="3" data-sm-items="1"
                         data-md-items="1" data-child="#child-carousel" data-for="#child-carousel"
                         data-center-mode="true" data-slide-to-scroll="1">
-                        <div class="item"><img src="{{ 'frontend' }}/images/slick-1.jpg" alt="" width="116" height="116"></div>
-                        <div class="item"><img src="{{ 'frontend' }}/images/slick-2.jpg" alt="" width="116" height="116"></div>
-                        <div class="item"><img src="{{ 'frontend' }}/images/slick-3.jpg" alt="" width="116" height="116"></div>
-                        <div class="item"><img src="{{ 'frontend' }}/images/slick-4.jpg" alt="" width="116" height="116"></div>
+                        <div class="item"><img src="{{ 'frontend' }}/images/slick-1.jpg" alt="" width="116"
+                                height="116"></div>
+                        <div class="item"><img src="{{ 'frontend' }}/images/slick-2.jpg" alt="" width="116"
+                                height="116"></div>
+                        <div class="item"><img src="{{ 'frontend' }}/images/slick-3.jpg" alt="" width="116"
+                                height="116"></div>
+                        <div class="item"><img src="{{ 'frontend' }}/images/slick-4.jpg" alt="" width="116"
+                                height="116"></div>
                     </div>
                     <div class="slick-slider" id="child-carousel" data-for=".carousel-parent" data-arrows="false"
                         data-loop="true" data-dots="false" data-swipe="false" data-items="1" data-xs-items="1"

@@ -1,4 +1,3 @@
-<!-- Page Footer-->
 <footer class="page-foot text-center text-md-left">
     <div class="container">
         <div class="row row-45 align-items-md-start">
@@ -70,8 +69,8 @@
                 <article class="post-widget"><a href="classic-single-blog.html">
                         <div
                             class="unit unit-sm-horizontal unit-align-center unit-xs unit-xs-middle unit-spacing-sm unit-sm-align-left">
-                            <div class="unit-left"><img class="img-responsive img-circle" src="{{ 'frontend' }}/images/home-15-60x60.jpg"
-                                    alt="" width="60" height="60" />
+                            <div class="unit-left"><img class="img-responsive img-circle"
+                                    src="{{ 'frontend' }}/images/home-15-60x60.jpg" alt="" width="60" height="60" />
                             </div>
                             <div class="unit-body">
                                 <div class="post-widget-meta"><span
@@ -87,8 +86,8 @@
                 <article class="post-widget"><a href="classic-single-blog.html">
                         <div
                             class="unit unit-sm-horizontal unit-align-center unit-xs unit-xs-middle unit-spacing-sm unit-sm-align-left">
-                            <div class="unit-left"><img class="img-responsive img-circle" src="{{ 'frontend' }}/images/home-16-60x60.jpg"
-                                    alt="" width="60" height="60" />
+                            <div class="unit-left"><img class="img-responsive img-circle"
+                                    src="{{ 'frontend' }}/images/home-16-60x60.jpg" alt="" width="60" height="60" />
                             </div>
                             <div class="unit-body">
                                 <div class="post-widget-meta"><span
@@ -104,8 +103,8 @@
                 <article class="post-widget"><a href="classic-single-blog.html">
                         <div
                             class="unit unit-sm-horizontal unit-align-center unit-xs unit-xs-middle unit-spacing-sm unit-sm-align-left">
-                            <div class="unit-left"><img class="img-responsive img-circle" src="{{ 'frontend' }}/images/home-17-60x60.jpg"
-                                    alt="" width="60" height="60" />
+                            <div class="unit-left"><img class="img-responsive img-circle"
+                                    src="{{ 'frontend' }}/images/home-17-60x60.jpg" alt="" width="60" height="60" />
                             </div>
                             <div class="unit-body">
                                 <div class="post-widget-meta"><span

@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="wide wow-animation" lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <!-- Site Title-->
+    <title>{{ config('app.name', 'Alesha Food & Beverage') }}</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title> {{ config('app.name', 'Alesha Food') }} </title>
-
+    <meta charset="utf-8">
     <script src="/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ 'frontend' }}/images/favicon.ico" type="image/x-icon">
 
+    <!-- Include all CSS -->
     @include('frontend.layout.includes.css')
 
 </head>
 
 <body>
+
     <!-- Per Page Loader -->
     <div class="preloader">
         <div class="preloader-body">
@@ -28,17 +30,21 @@
     </div>
 
     <div class="page text-center text-md-left">
-        <!-- Include Web Header -->
+        
+        <!-- Web Header -->
         @include('frontend.layout.headers.header')
 
+        <!-- Main Page Content -->
         @yield('content')
 
-        <!-- Include Web Footer -->
+        <!-- Web Footer -->
         @include('frontend.layout.footers.footer')
+        
     </div>
 
-    <!-- Include JS -->
+    <!-- Include All JS -->
     @include('frontend.layout.includes.js')
+
 </body>
 
 </html>
