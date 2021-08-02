@@ -42,7 +42,7 @@
                                 <thead>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Position</th>
+                                    <th>Slug</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </thead>
@@ -93,8 +93,8 @@
                     name: 'name'
                 },
                 {
-                    data:'position',
-                    name:'position'
+                    data:'slug',
+                    name:'slug'
                 },
                 {
                     data: 'is_active',

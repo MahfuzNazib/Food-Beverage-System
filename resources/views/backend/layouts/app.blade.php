@@ -9,7 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Argon Dashboard') }}</title>
-
+    
+   
     {{-- CSS Files --}}
     @include('backend.layouts.includes.css')
 
