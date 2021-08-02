@@ -58,7 +58,7 @@ class SubModuleSeeder extends Seeder
                 'name' => 'Sub-Categories',
                 'key' => 'sub_categories',
                 'position' => 3,
-                'route' => 'user.all',
+                'route' => 'sub-category.index',
                 'module_id' => 2,
             ],
             // Category & Brand End. Module Id 2 

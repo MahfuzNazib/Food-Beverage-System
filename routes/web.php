@@ -30,6 +30,7 @@ Route::group(['prefix' => 'Dashboard', 'middleware' => 'auth'], function () {
 	require_once 'backend/meal_management.php';
 	require_once 'backend/brand_management.php';
 	require_once 'backend/category_management.php';
+	require_once 'backend/sub_category_management.php';
 
 	// Route::get("/brand", [BrandController::class, 'index'])->name('brand.index'); 
 
