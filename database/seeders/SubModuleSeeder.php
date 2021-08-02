@@ -36,24 +36,33 @@ class SubModuleSeeder extends Seeder
             ],
             //module id 1 end
             
-            // Meal Module Start
+            // Category & Brand Start. Module Id 2 
             [
                 'id' => 3,
-                'name' => 'Daily Meals',
-                'key' => 'daily_meals',
+                'name' => 'Brand',
+                'key' => 'brand',
                 'position' => 1,
-                'route' => 'meal.add',
+                'route' => 'user.all',
                 'module_id' => 2,
             ],
             [
                 'id' => 4,
-                'name' => 'Meal List',
-                'key' => 'meal_list',
+                'name' => 'Categories',
+                'key' => 'categories',
                 'position' => 2,
-                'route' => 'meal.list',
+                'route' => 'user.all',
                 'module_id' => 2,
             ],
-            // Meal Module End
+            [
+                'id' => 5,
+                'name' => 'Sub-Categories',
+                'key' => 'sub_categories',
+                'position' => 3,
+                'route' => 'user.all',
+                'module_id' => 2,
+            ],
+            // Category & Brand End. Module Id 2 
+
         ]);
     }
 }

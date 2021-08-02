@@ -26,29 +26,21 @@ class ModuleSeeder extends Seeder
 
             [
                 'id' => 2,
-                'name' => 'Meal Management',
-                'key' => 'meal_management',
+                'name' => 'Category & Brand',
+                'key' => 'category_brand',
                 'icon' => 'ni ni-world',
                 'position' => 2,
                 'route' => null,
             ],
 
-            // [
-            //     'id' => 2,
-            //     'name' => 'Apps Management',
-            //     'key' => 'app_management',
-            //     'icon' => 'perm_phone_msg',
-            //     'position' => 2,
-            //     'route' => null,
-            // ],
-            // [
-            //     'id' => 3,
-            //     'name' => 'Product Management',
-            //     'key' => 'product_management',
-            //     'icon' => 'perm_phone_msg',
-            //     'position' => 3,
-            //     'route' => null,
-            // ],
+            [
+                'id' => 3,
+                'name' => 'Product Management',
+                'key' => 'product_management',
+                'icon' => 'ni ni-world',
+                'position' => 3,
+                'route' => null,
+            ],
         ]);
     }
 }

@@ -20,9 +20,11 @@
                             </a>
                         </div> --}}
                     {{-- </div> --}}
-                    <div>
+                    <div class="mt-3">
                         <center>
-                            <img src="{{ asset('/argon/img/brand/logo2.svg') }}" class="image--cover">
+                            <a href="{{route('home')}}">
+                            <img src="{{ asset('/frontend/images/logo-3.png') }}" >
+                            </a>
                         </center>
                     </div>
                     <div class="card-body px-lg-5 py-lg-5">

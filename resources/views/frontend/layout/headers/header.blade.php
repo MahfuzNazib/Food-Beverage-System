@@ -44,8 +44,7 @@
                         <li><a href="{{ route('all_products') }}">All Products</a>
                         </li>
 
-                        <li><a href="#">All Category</a>
-                            <!-- RD Navbar Dropdown-->
+                        <!-- <li><a href="#">All Category</a>
                             <ul class="rd-navbar-megamenu">
                                 <li>
                                     <p>Elements</p>
@@ -90,7 +89,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li><a href="#">Our Outlets</a>
                             <ul class="rd-navbar-dropdown">
@@ -111,6 +110,8 @@
                             </ul>
                         </li>
                         <li><a href="#">Contact Us</a></li>
+                        <li><a href="{{ route('login.show') }}">SignIn</a></li>
+
                         <!-- RD Search-->
                         <li class="rd-navbar-search">
                             <!-- <span> <img src="{{ 'frontend' }}/images/icons/search.png" class="icon-size"> </span> -->

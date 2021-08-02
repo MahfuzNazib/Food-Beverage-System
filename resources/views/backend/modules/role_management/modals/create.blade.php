@@ -18,7 +18,9 @@
                 {{-- Show Available Roles Start --}}
                 <div class="row">
                     @foreach( App\Models\Module::orderBy('id','desc')->get() as $module )
+                    
                     @foreach( $module->permission as $module_permission )
+                    
                     @if($module->key == $module_permission->key )
                     <div class="col-lg-6 col-md-6">
                         <button type="button" class="permission-block">

@@ -34,27 +34,33 @@ class PermissionSeeder extends Seeder
                 'module_id' => 1,
             ],
 
-            // Meal Permission Start
+            // Category Brand Permission Start
             [
                 'id' => 4,
-                'key' => 'meal_management',
-                'display_name' => 'Meal Management',
+                'key' => 'category_brand',
+                'display_name' => 'Category & Brand',
                 'module_id' => 2,
             ],
             [
                 'id' => 5,
-                'key' => 'daily_meals',
-                'display_name' => 'Daily Meals',
+                'key' => 'brand',
+                'display_name' => 'Brand',
                 'module_id' => 2,
             ],
             [
                 'id' => 6,
-                'key' => 'meal_list',
-                'display_name' => 'Meal List',
+                'key' => 'categories',
+                'display_name' => 'Categories',
+                'module_id' => 2,
+            ],
+            [
+                'id' => 7,
+                'key' => 'sub_categories',
+                'display_name' => 'Sub Categories',
                 'module_id' => 2,
             ],
 
-            // Meal Permission End
+            // Category Brand Permission End
         ]);
     }
 }
