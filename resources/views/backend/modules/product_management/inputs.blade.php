@@ -4,56 +4,6 @@
 @include('backend.layouts.headers.cards')
 
 {{-- Page Header Start --}}
-
-<style>
-    /* Style the tab */
-    .tab {
-        float: left;
-        border: 1px solid #ccc;
-        background-color: #f1f1f1;
-        width: 100%;
-        height: 300px;
-    }
-
-    /* Style the buttons inside the tab */
-    .tab button {
-        display: block;
-        background-color: inherit;
-        color: black;
-        padding: 16px 16px;
-        width: 100%;
-        border: none;
-        outline: none;
-        text-align: left;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 15px;
-    }
-
-    /* Change background color of buttons on hover */
-    .tab button:hover {
-        background-color: #ddd;
-    }
-
-    /* Create an active/current "tab button" class */
-    .tab button.active {
-        background-color: #5E72E4;
-    }
-
-    /* Style the tab content */
-    .tabcontent {
-        float: left;
-        padding: 0px 12px;
-        width: 100%;
-        border-left: none;
-        height: auto;
-    }
-
-    .hide-block {
-        display: none;
-    }
-
-</style>
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
         <div class="header-body">
@@ -77,7 +27,7 @@
 <div class="container-fluid mt--6">
     <div class="row justify-content-center">
         <div class=" col ">
-            <div class="card">
+            <div class="card mb-2">
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="tab">
@@ -86,34 +36,93 @@
                             <button class="tablinks" onclick="openTab(event, 'descriptions')">Description</button>
                             <button class="tablinks" onclick="openTab(event, 'product_gallery')">Product
                                 Gallery</button>
-                            <button class="tablinks" onclick="openTab(event, 'product_status')">Status</button>
+                            <button class="tablinks" onclick="openTab(event, 'details')">Details</button>
                         </div>
                     </div>
 
 
                     <div class="col-sm-9">
                         <form>
+                            <!-- Basic Information Start -->
                             <div id="basic_info" class="tabcontent mt-2">
                                 <label>Product Name <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control form-control-sm" name="name">
 
                                 <label>Product Specification <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="article-ckeditor" name="specification"></textarea>
                             </div>
+                            <!-- Basic Information End -->
 
-                            <div id="descriptions" class="tabcontent hide-block">
-                                <h3>Product Basic description</h3>
-                                <p>descriptions is the capital of France.</p>
-                            </div>
+                            <!-- Product Description Start -->
+                            <div id="descriptions" class="tabcontent hide-block mt-2">
+                                <label>Short Description <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="short_description"
+                                    name="short_description"></textarea>
 
-                            <div id="product_gallery" class="tabcontent hide-block">
-                                <h3>product_gallery</h3>
-                                <p>product_gallery is the capital of Japan.</p>
+                                <label>Description <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="description" name="description"></textarea>
                             </div>
+                            <!-- Product Description End -->
 
-                            <div id="product_status" class="tabcontent hide-block">
-                                <h3>Product Status</h3>
-                                <p>product_gallery is the capital of Japan.</p>
+                            <!-- Product Image Gallery Start -->
+                            <div id="product_gallery" class="tabcontent hide-block mt-2">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Thumbnail Image <span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control preview_image" name="thumbnail">
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <img id="frame" src="{{ asset('frontend') }}/images/product-demo.png"
+                                            height="120px" width="120px">
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 w-100">
+                                    <div class="card shadow-sm w-100">
+                                        <div class="card-header d-flex justify-content-between">
+                                            <h4>Product Images</h4>
+                                            <div id="form">
+                                                <input type="file" name="Image" id="image" multiple="" class="d-none"
+                                                    onchange="image_select()">
+                                                <button class="btn btn-sm btn-primary" type="button"
+                                                    onclick="document.getElementById('image').click()">Choose
+                                                    Images</button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex flex-wrap justify-content-start" id="container">
+                                            <!-- Image will be show here-->
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <!-- Product Image Gallery End -->
+
+
+                            <!-- Product Startus Start -->
+                            <div id="details" class="tabcontent hide-block mt-2 mr-4">
+                                
+                                <label>Category <span class="text-danger">*</span></label>
+                                <select class="form-control form-control-sm" name="category_id">
+                                    <option selected disabled>Select Product Category</option>
+                                </select>
+
+                                <label class="mt-3">Sub Category <span class="text-danger">*</span></label>
+                                <select class="form-control form-control-sm" name="sub_category_id">
+                                    <option selected disabled>Select Product SubCategory</option>
+                                </select>
+
+                                <label class="mt-3">Brand <span class="text-danger">*</span></label>
+                                <select class="form-control form-control-sm" name="brand_id">
+                                    <option selected disabled>Select Brand</option>
+                                </select>
+
+                                <label class="mt-3">Regular Price <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control form-control-sm">
+
+                                <button type="submit" class="btn btn-success ml-1 mt-3">Add Product</button>
+                            </div>
+                            <!-- Product Startus End -->
                         </form>
                     </div>
                 </div>
@@ -125,7 +134,7 @@
 
 @endsection
 
-
+@section("per_page_js")
 <script>
     function openTab(evt, cityName) {
         var i, tabcontent, tablinks;
@@ -145,3 +154,75 @@
     document.getElementById("defaultOpen").click();
 
 </script>
+
+<script>
+    CKEDITOR.replace('article-ckeditor');
+    CKEDITOR.replace('short_description');
+    CKEDITOR.replace('description');
+
+</script>
+
+<script>
+    var images = [];
+
+    // For Thumbnail Imag
+    $('.preview_image').on('change', function () {
+        frame.src = URL.createObjectURL(event.target.files[0]);
+    })
+
+    function image_select() {
+        var image = document.getElementById('image').files;
+        for (i = 0; i < image.length; i++) {
+            if (check_duplicate(image[i].name)) {
+                images.push({
+                    "name": image[i].name,
+                    "url": URL.createObjectURL(image[i]),
+                    "file": image[i],
+                })
+            } else {
+                alert(image[i].name + " is already added to the list");
+            }
+        }
+        document.getElementById('form').value = '';
+        document.getElementById('container').innerHTML = image_show();
+    }
+
+    function image_show() {
+        var image = "";
+        images.forEach((i) => {
+            image += `<div class="image_container d-flex justify-content-center position-relative">
+   	  	  	  	  <img src="` + i.url + `" alt="Image">
+   	  	  	  	  <span class="position-absolute" onclick="delete_image(` + images.indexOf(i) + `)">&times;</span>
+   	  	  	  </div>`;
+        })
+        return image;
+    }
+
+    function delete_image(e) {
+        images.splice(e, 1);
+        document.getElementById('container').innerHTML = image_show();
+    }
+
+    function check_duplicate(name) {
+        var image = true;
+        if (images.length > 0) {
+            for (e = 0; e < images.length; e++) {
+                if (images[e].name == name) {
+                    image = false;
+                    break;
+                }
+            }
+        }
+        return image;
+    }
+
+    function get_image_data() {
+        var form = new FormData()
+        for (let index = 0; index < images.length; index++) {
+            form.append("file[" + index + "]", images[index]['file']);
+        }
+        return form;
+    }
+
+</script>
+@endsection

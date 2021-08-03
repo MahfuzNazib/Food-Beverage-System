@@ -55,5 +55,4 @@
     @include('backend.layouts.includes.js')
 
 </body>
-
 </html>
