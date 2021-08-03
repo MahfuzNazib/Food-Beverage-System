@@ -74,10 +74,10 @@ class SubModuleSeeder extends Seeder
             ],
             [
                 'id' => 7,
-                'name' => 'Attribute Values',
-                'key' => 'attribute_values',
+                'name' => 'Attribute Category',
+                'key' => 'attribute_category',
                 'position' => 2,
-                'route' => 'attribute.index',
+                'route' => 'attribute-category.index',
                 'module_id' => 3,
             ],
             [

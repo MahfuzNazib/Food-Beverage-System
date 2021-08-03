@@ -79,8 +79,8 @@ class PermissionSeeder extends Seeder
             ],
             [
                 'id' => 10,
-                'key' => 'attribute_values',
-                'display_name' => 'Attribute Values',
+                'key' => 'attribute-category',
+                'display_name' => 'Attribute Category',
                 'module_id' => 3,
             ],
             [
