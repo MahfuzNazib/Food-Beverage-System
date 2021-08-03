@@ -74,6 +74,14 @@ class SubModuleSeeder extends Seeder
             ],
             [
                 'id' => 7,
+                'name' => 'Attribute Values',
+                'key' => 'attribute_values',
+                'position' => 2,
+                'route' => 'attribute.index',
+                'module_id' => 3,
+            ],
+            [
+                'id' => 8,
                 'name' => 'All Product',
                 'key' => 'all_product',
                 'position' => 2,
@@ -81,7 +89,7 @@ class SubModuleSeeder extends Seeder
                 'module_id' => 3,
             ],
             [
-                'id' => 8,
+                'id' => 9,
                 'name' => 'Add New Product',
                 'key' => 'add_new_product',
                 'position' => 3,
