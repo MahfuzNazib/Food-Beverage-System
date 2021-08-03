@@ -41,8 +41,7 @@
                             <table class="table table-bordered attribute-datatable" id="datatable">
                                 <thead>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Value</th>
+                                    <th>AttributeName</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </thead>
@@ -86,14 +85,9 @@
                     data: 'id',
                     name: 'id'
                 },
-                
                 {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data:'value',
-                    name:'value'
+                    data:'name',
+                    name:'name'
                 },
                 {
                     data: 'is_active',

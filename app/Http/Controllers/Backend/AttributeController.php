@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Attribute;
+use App\Models\Attribute;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
+use Exception;
+use Illuminate\Support\Facades\Validator;
 
 class AttributeController extends Controller
 {
@@ -72,13 +76,14 @@ class AttributeController extends Controller
     {
         if(can('attribute')){
 
-            foreach($request['name'] as $key => $single_attribute){
+            foreach($request['name'] as $key=> $single_attribute){
+
                 $attribute = new Attribute();
+                $attribute->is_active = $request['is_active'][$key];
                 $attribute->name = $request['name'][$key];
-                $attribute->values = $request['values'][$key];
 
                 $attribute->save();
-            } 
+            }
 
             return response()->json(['success' => 'Attribute Successfully Created'], 200);
         }else{
@@ -105,7 +110,13 @@ class AttributeController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(can('attribute')){
+            $editRow = Attribute::find($id);
+            return view('backend.modules.attribute_management.modals.inputs', compact('editRow'));
+            
+        }else{
+            return view('errors.404');
+        }
     }
 
     /**
@@ -117,7 +128,37 @@ class AttributeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(can('attribute')){
+
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 422);
+            } else {
+                try {
+
+                    $attribute = Attribute::find($id);
+
+                    $attribute->name = $request->name;
+                    $attribute->is_active = $request->is_active;
+
+                    $update_attribute = $attribute->save();
+
+                    if ($update_attribute) {
+                        return response()->json(['success' => 'Attribute Successfully Updated'], 200);
+                    } else {
+                        return response()->json(['warning' => 'Something went wrong.Try Next time'], 200);
+                    }
+                } catch (\Exception $e) {
+                    throw new \Exception($e->getMessage(), 1);
+                }
+            }
+
+        }else{
+            return view('errors.404');
+        }
     }
 
     /**

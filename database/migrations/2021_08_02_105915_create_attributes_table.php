@@ -16,7 +16,6 @@ class CreateAttributesTable extends Migration
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('values');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
