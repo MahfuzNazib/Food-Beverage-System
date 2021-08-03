@@ -85,7 +85,7 @@ class SubModuleSeeder extends Seeder
                 'name' => 'All Product',
                 'key' => 'all_product',
                 'position' => 2,
-                'route' => 'brand.index',
+                'route' => 'product.index',
                 'module_id' => 3,
             ],
             [
@@ -93,7 +93,7 @@ class SubModuleSeeder extends Seeder
                 'name' => 'Add New Product',
                 'key' => 'add_new_product',
                 'position' => 3,
-                'route' => 'brand.index',
+                'route' => 'product.create',
                 'module_id' => 3,
             ],
             // Product End. Module ID 3

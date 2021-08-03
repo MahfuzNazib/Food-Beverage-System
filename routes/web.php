@@ -32,10 +32,7 @@ Route::group(['prefix' => 'Dashboard', 'middleware' => 'auth'], function () {
 	require_once 'backend/sub_category_management.php';
 	require_once 'backend/attribute_management.php';
 	require_once 'backend/attribute_category_management.php';
-
-
-
-	// Route::get("/brand", [BrandController::class, 'index'])->name('brand.index'); 
+	require_once 'backend/product_management.php';
 
 });
 

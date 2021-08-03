@@ -9,5 +9,6 @@
 <script src="{{ asset('argon') }}/js/custom_script.js"></script>
 <!-- Sweet Alert JS -->
 <script src="{{ asset('argon') }}/js/sweetalert2.min.js"></script>
+<script src="{{ asset('vendor') }}/unisharp/laravel-ckeditor/ckeditor.js"></script>
 
 @yield("per_page_js")
