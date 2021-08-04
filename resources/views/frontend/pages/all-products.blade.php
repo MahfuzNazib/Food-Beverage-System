@@ -115,10 +115,12 @@
                     </div>
                 </div>
                 <div class="row">
+                    <!-- Product Card Start-->
+                    @foreach($products as $product)
                     <div class="col-md-6 col-xl-4">
                         <div class="product-featured text-center">
                             <div class="product-featured-images"><img class="img-responsive"
-                                    src="{{ 'frontend' }}/images/home-06-270x204.png" alt="" width="270" height="204" />
+                                    src="{{ asset('frontend/images/thumbnails/'.$product->thumbnail) }}" alt="" width="270" height="204" />
                             </div>
                             <div class="product-featured-rating"><span
                                     class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -128,132 +130,19 @@
                                     class="icon material-icons-star_half icon-saffron icon-xs-small"></span></div>
                             <div class="product-featured-title">
                                 <div class="h7 text-sbold"><a class="text-chateau-green"
-                                        href="shop-single-products.html">Bananas</a></div>
+                                        href="shop-single-products.html">{{ $product->name }}</a></div>
                             </div>
-                            <div class="product-featured-price"><span
-                                    class="product-price-new h6 text-sbold">$34.00</span><span
-                                    class="product-price-old h7 text-light text-regular">$80.00</span></div>
+                            <div class="product-featured-price">
+                                <span class="product-price-new h6 text-sbold">৳ {{ $product->price }}</span>
+                                <!-- <span class="product-price-old h7 text-light text-regular">৳ {{ $product->price }}</span> -->
+                            </div>
                             <div class="product-featured-block-hover"><a class="btn btn-icon btn-icon-left btn-success"
                                     href="shop-cart.html"><span class="icon fl-outicons-shopping-cart13"></span>Add to
                                     cart</a></div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="product-featured text-center">
-                            <div class="product-featured-images"><img class="img-responsive"
-                                    src="{{ 'frontend' }}/images/home-07-270x204.png" alt="" width="270" height="204" />
-                            </div>
-                            <div class="product-featured-rating"><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-star_half icon-saffron icon-xs-small"></span></div>
-                            <div class="product-featured-title">
-                                <div class="h7 text-sbold"><a class="text-chateau-green"
-                                        href="shop-single-products.html">Kiwis</a>
-                                </div>
-                            </div>
-                            <div class="product-featured-price"><span
-                                    class="product-price-new h6 text-sbold">$74.00</span><span
-                                    class="product-price-old h7 text-light text-regular"></span></div>
-                            <div class="product-featured-block-hover"><a class="btn btn-icon btn-icon-left btn-success"
-                                    href="shop-cart.html"><span class="icon fl-outicons-shopping-cart13"></span>Add to
-                                    cart</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="product-featured text-center">
-                            <div class="product-featured-images"><img class="img-responsive"
-                                    src="{{ 'frontend' }}/images/home-08-270x204.png" alt="" width="270" height="204" />
-                            </div>
-                            <div class="product-featured-rating"><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-star_half icon-saffron icon-xs-small"></span></div>
-                            <div class="product-featured-title">
-                                <div class="h7 text-sbold"><a class="text-chateau-green"
-                                        href="shop-single-products.html">Strawberries</a></div>
-                            </div>
-                            <div class="product-featured-price"><span
-                                    class="product-price-new h6 text-sbold">$90.00</span><span
-                                    class="product-price-old h7 text-light text-regular">$120.00</span></div>
-                            <div class="product-featured-block-hover"><a class="btn btn-icon btn-icon-left btn-success"
-                                    href="shop-cart.html"><span class="icon fl-outicons-shopping-cart13"></span>Add to
-                                    cart</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="product-featured text-center">
-                            <div class="product-featured-images"><img class="img-responsive"
-                                    src="{{ 'frontend' }}/images/home-09-270x204.png" alt="" width="270" height="204" />
-                            </div>
-                            <div class="product-featured-rating"><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-star_half icon-saffron icon-xs-small"></span></div>
-                            <div class="product-featured-title">
-                                <div class="h7 text-sbold"><a class="text-chateau-green"
-                                        href="shop-single-products.html">Pineapples</a></div>
-                            </div>
-                            <div class="product-featured-price"><span
-                                    class="product-price-new h6 text-sbold">$60.00</span><span
-                                    class="product-price-old h7 text-light text-regular">$90.00</span></div>
-                            <div class="product-featured-block-hover"><a class="btn btn-icon btn-icon-left btn-success"
-                                    href="shop-cart.html"><span class="icon fl-outicons-shopping-cart13"></span>Add to
-                                    cart</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="product-featured text-center">
-                            <div class="product-featured-images"><img class="img-responsive"
-                                    src="{{ 'frontend' }}/images/shop-grid-view-01-270x-204.png" alt="" width="204" />
-                            </div>
-                            <div class="product-featured-rating"><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-star_half icon-saffron icon-xs-small"></span></div>
-                            <div class="product-featured-title">
-                                <div class="h7 text-sbold"><a class="text-chateau-green"
-                                        href="shop-single-products.html">Peaches</a></div>
-                            </div>
-                            <div class="product-featured-price"><span
-                                    class="product-price-new h6 text-sbold">$25.00</span><span
-                                    class="product-price-old h7 text-light text-regular"></span></div>
-                            <div class="product-featured-block-hover"><a class="btn btn-icon btn-icon-left btn-success"
-                                    href="shop-cart.html"><span class="icon fl-outicons-shopping-cart13"></span>Add to
-                                    cart</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="product-featured text-center">
-                            <div class="product-featured-images"><img class="img-responsive"
-                                    src="{{ 'frontend' }}/images/shop-grid-view-02-270x-204.png" alt="" width="204" />
-                            </div>
-                            <div class="product-featured-rating"><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                    class="icon material-icons-star_half icon-saffron icon-xs-small"></span></div>
-                            <div class="product-featured-title">
-                                <div class="h7 text-sbold"><a class="text-chateau-green"
-                                        href="shop-single-products.html">Blueberries</a></div>
-                            </div>
-                            <div class="product-featured-price"><span
-                                    class="product-price-new h6 text-sbold">$34.00</span><span
-                                    class="product-price-old h7 text-light text-regular"></span></div>
-                            <div class="product-featured-block-hover"><a class="btn btn-icon btn-icon-left btn-success"
-                                    href="shop-cart.html"><span class="icon fl-outicons-shopping-cart13"></span>Add to
-                                    cart</a></div>
-                        </div>
-                    </div>
+                    @endforeach
+                    <!-- Product Card End -->
                 </div>
                 <ul class="pagination-classic pagination-classic-center pagination-classic-1 pagination-classic-mod-1">
                     <li>

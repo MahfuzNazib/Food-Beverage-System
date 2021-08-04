@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -13,7 +14,8 @@ class WebController extends Controller
     }
 
     public function all_products(){
-        return view('frontend.pages.all-products');
+        $products = Product::select('id', 'name', 'price', 'thumbnail')->get();
+        return view('frontend.pages.all-products', compact('products'));
     }
 
     public function contact_us(){

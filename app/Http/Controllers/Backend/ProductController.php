@@ -58,9 +58,8 @@ class ProductController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
 
-                $file->move('frontend/images/products/', $filename);
+                $file->move('frontend/images/thumbnails/', $filename);
                 $data['thumbnail'] = $filename;
-
             }
             // Thumbnail Image Processing End
 
@@ -75,7 +74,7 @@ class ProductController extends Controller
                     $img = $single_image;
                     $extension = $img->getClientOriginalExtension();
                     $image = time(). '.' .$extension;
-                    $img->move('frontend/images/products/', $image);
+                    $img->move('frontend/images/product_images/', $image);
 
                     $product_image->product_id = $add_product->id;
                     $product_image->image = $image;
