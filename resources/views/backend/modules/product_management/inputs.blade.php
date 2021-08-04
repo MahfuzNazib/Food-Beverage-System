@@ -42,17 +42,20 @@
 
 
                     <div class="col-sm-9">
-                        <form method="POST" action="{{ route('product.store') }}" accept-charset="utf-8" enctype="multipart/form-data">
-                        @csrf
+                        <form method="POST" action="{{ route('product.store') }}" accept-charset="utf-8"
+                            enctype="multipart/form-data">
+                            @csrf
                             <!-- Basic Information Start -->
                             <div id="basic_info" class="tabcontent mt-2">
                                 <label>Product Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control form-control-sm" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control form-control-sm" name="name"
+                                    value="{{ old('name') }}">
                                 <div><span class="text-danger">{{ $errors->first('name') }}</span></div>
 
                                 <label class="mt-2">Product Specification <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="specification" name="specification">{{ old('specification') }}</textarea>
-                                <div><span class="text-danger">{{ $errors->first('specification') }}</span></div>                            
+                                <textarea class="form-control" id="specification"
+                                    name="specification">{{ old('specification') }}</textarea>
+                                <div><span class="text-danger">{{ $errors->first('specification') }}</span></div>
                             </div>
                             <!-- Basic Information End -->
 
@@ -61,11 +64,12 @@
                                 <label>Short Description <span class="text-danger">*</span></label>
                                 <textarea class="form-control" id="short_description"
                                     name="short_description">{{ old('short_description') }}</textarea>
-                                <div><span class="text-danger">{{ $errors->first('short_description') }}</span></div>                            
-                                
+                                <div><span class="text-danger">{{ $errors->first('short_description') }}</span></div>
+
 
                                 <label class="mt-2">Description <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
+                                <textarea class="form-control" id="description"
+                                    name="description">{{ old('description') }}</textarea>
                                 <div><span class="text-danger">{{ $errors->first('description') }}</span></div>
 
                             </div>
@@ -75,8 +79,10 @@
                             <div id="product_gallery" class="tabcontent hide-block mt-2">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Thumbnail Image (Height:204, Width:270)<span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control preview_image" name="thumbnail" accept="image/*">
+                                        <label>Thumbnail Image (Height:204, Width:270)<span
+                                                class="text-danger">*</span></label>
+                                        <input type="file" class="form-control preview_image" name="thumbnail"
+                                            accept="image/*">
                                         <div><span class="text-danger">{{ $errors->first('thumbnail') }}</span></div>
 
                                     </div>
@@ -100,7 +106,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body d-flex flex-wrap justify-content-start" id="container">
-                                           
+
                                         </div>
                                     </div>
                                 </div>
@@ -110,35 +116,57 @@
 
                             <!-- Product Details Start -->
                             <div id="details" class="tabcontent hide-block mt-2 mr-4">
-                                
-                                <label>Category <span class="text-danger">*</span></label>
-                                <select class="form-control form-control-sm" name="category_id">
-                                    <option selected disabled>Select Product Category</option>
-                                    @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" @if(old('category_id') == $category->id) selected="selected" @endif>{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                <div><span class="text-danger">{{ $errors->first('category_id') }}</span></div>
 
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Category <span class="text-danger">*</span></label>
+                                        <select class="form-control form-control-sm" name="category_id">
+                                            <option selected disabled>Select Product Category</option>
+                                            @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" @if(old('category_id')==$category->id)
+                                                selected="selected" @endif>{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div><span class="text-danger">{{ $errors->first('category_id') }}</span></div>
+                                    </div>
 
-                                <label class="mt-3">Sub Category <span class="text-danger">*</span></label>
-                                <select class="form-control form-control-sm" name="sub_category_id">
-                                    <option selected disabled>Select Product SubCategory</option>
-                                    @foreach($sub_categories as $sub_category)
-                                    <option value="{{ $sub_category->id }}" @if(old('sub_category_id') == $sub_category->id) selected="selected" @endif>{{ $sub_category->name }}</option>
-                                    @endforeach
-                                </select>
-                                <div><span class="text-danger">{{ $errors->first('sub_category_id') }}</span></div>
+                                    <div class="col-sm-6">
+                                        <label>Sub Category <span class="text-danger">*</span></label>
+                                        <select class="form-control form-control-sm" name="sub_category_id">
+                                            <option selected disabled>Select Product SubCategory</option>
+                                            @foreach($sub_categories as $sub_category)
+                                            <option value="{{ $sub_category->id }}"
+                                                @if(old('sub_category_id')==$sub_category->id) selected="selected"
+                                                @endif>{{ $sub_category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div><span class="text-danger">{{ $errors->first('sub_category_id') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="mt-3">Brand <span class="text-danger">*</span></label>
+                                        <select class="form-control form-control-sm" name="brand_id">
+                                            <option selected disabled>Select Brand</option>
+                                            @foreach($brands as $brand)
+                                            <option value="{{ $brand->id }}" @if(old('brand_id')==$brand->id)
+                                                selected="selected" @endif>{{ $brand->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div><span class="text-danger">{{ $errors->first('brand_id') }}</span></div>
+                                    </div>
 
-                                <label class="mt-3">Brand <span class="text-danger">*</span></label>
-                                <select class="form-control form-control-sm" name="brand_id">
-                                    <option selected disabled>Select Brand</option>
-                                    @foreach($brands as $brand)
-                                    <option value="{{ $brand->id }}" @if(old('brand_id') == $brand->id) selected="selected" @endif>{{ $brand->name }}</option>
-                                    @endforeach
-                                </select>
-                                <div><span class="text-danger">{{ $errors->first('brand_id') }}</span></div>
+                                    <div class="col-sm-6">
+                                        <label class="mt-3">Is Featured <span class="text-danger">*</span></label>
+                                        <select class="form-control form-control-sm" name="is_featured">
+                                            <option selected value="0">No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+                                        <div><span class="text-danger">{{ $errors->first('brand_id') }}</span></div>
+                                    </div>
+                                </div>
 
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -192,11 +220,10 @@
     CKEDITOR.replace('specification');
     CKEDITOR.replace('short_description');
     CKEDITOR.replace('description');
+
 </script>
 
 <script>
-    
-
     // For Thumnail Image Preview
     $('.preview_image').on('change', function () {
         frame.src = URL.createObjectURL(event.target.files[0]);
@@ -204,6 +231,7 @@
 
     //For Multiple Image Inputs and Previews
     var images = [];
+
     function image_select() {
         var image = document.getElementById('image').files;
         for (i = 0; i < image.length; i++) {

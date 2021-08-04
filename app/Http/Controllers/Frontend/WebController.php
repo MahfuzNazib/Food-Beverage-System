@@ -13,7 +13,8 @@ class WebController extends Controller
     public function home()
     {
         $categories = Category::orderBy('position', 'asc')->get();
-        return view('frontend.pages.home', compact('categories'));
+        $featured_products = Product::select('id', 'slug', 'name', 'thumbnail', 'price')->where('is_featured', 1)->get();
+        return view('frontend.pages.home', compact('categories', 'featured_products'));
     }
 
     public function all_products(){

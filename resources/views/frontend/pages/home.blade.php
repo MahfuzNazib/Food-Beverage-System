@@ -55,7 +55,7 @@
         <div class="row">
             <!-- Owl Carousel-->
             <div class="owl-carousel owl-carousel-mod" data-dots="true" data-nav="false" data-items="1"
-                data-autoplay="false" data-sm-items="2" data-lg-items="3" data-stage-padding="15" data-loop="false"
+                data-autoplay="true" data-sm-items="2" data-lg-items="3" data-stage-padding="15" data-loop="false"
                 data-margin="30">
                 <!-- Categories Start -->
                 @foreach($categories as $category)
@@ -194,460 +194,51 @@
 <section class="section-50 section-lg-115 section-lg-bottom-85">
     <div class="container">
         <h3 class="heading-3 text-center">Featured Products</h3>
-        <div class="tabs-custom tabs-horizontal tabs-corporate tabs-horizontal-minimal" id="tabs-1">
-            <!--Nav tabs-->
-            <ul class="nav nav-tabs">
-                <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1"
-                        data-toggle="tab">Fruits</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2"
-                        data-toggle="tab">Vegetables</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3"
-                        data-toggle="tab">Bread</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab">Meat</a>
-                </li>
-            </ul>
-            <!--Tab panes-->
+        <div class="tabs-custom tabs-horizontal tabs-corporate tabs-horizontal-minimal">
+            
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="tabs-1-1">
+                <div class="tab-pane fade show active">
                     <!-- Owl Carousel-->
-                    <div class="owl-carousel owl-carousel-custom" data-items="1" data-md-items="2" data-lg-items="4"
-                        data-stage-padding="15" data-dots-each="1" data-loop="true" data-dots="true" data-margin="30"
-                        data-autoplay="false">
+                    <div class="owl-carousel owl-carousel-mod" data-dots="true" data-nav="false" data-items="1"
+                        data-autoplay="true" data-sm-items="2" data-lg-items="3" data-stage-padding="15" data-loop="false"
+                        data-margin="30">
+
+                        @if(count($featured_products))
+
+                        @foreach($featured_products as $feature_product)
                         <div class="item">
                             <div class="product-featured text-center">
                                 <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-06-270x204.png" alt="" width="270"
+                                        src="{{ 'frontend' }}/images/thumbnails/{{ $feature_product->thumbnail }}" alt="" width="270"
                                         height="204" />
                                 </div>
 
                                 <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="single-products.html">Bananas</a></div>
+                                    <div class="h7 text-sbold">
+                                        <a class="text-chateau-green" href="single-products.html">{{ $feature_product->name }}</a>
+                                    </div>
                                 </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$34.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$80.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span> <img
+
+                                <div class="product-featured-price">
+                                    <span class="product-price-new h6 text-sbold">৳ {{ $feature_product->price }}</span>
+                                    <!-- <span class="product-price-old h7 text-light text-regular">$80.00</span> -->
+                                </div>
+
+                                <div class="product-featured-block-hover"><a class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span> <img
                                                 src="{{ 'frontend' }}/images/icons/shopping-cart-w.png"
                                                 class="icon-size"> </span>Add to cart</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-07-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Kiwis</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$74.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$90.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
+                        @endforeach
+                        
+                        @else
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <small class="test-muted">No Fretured Product Found...</small>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-08-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Strawberries</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$90.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$120.00</span>
-                                </div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-09-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Pineapples</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$60.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$90.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="tabs-1-2">
-                    <!-- Owl Carousel-->
-                    <div class="owl-carousel owl-carousel-custom" data-items="1" data-md-items="2" data-lg-items="4"
-                        data-stage-padding="15" data-dots-each="1" data-loop="true" data-dots="true" data-margin="30"
-                        data-autoplay="false">
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-15-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Pepper</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$34.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$80.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-16-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Tomatoes</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$74.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$90.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-17-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Potatoes</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$90.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$120.00</span>
-                                </div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-18-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Aubergine</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$60.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$90.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="tabs-1-3">
-                    <!-- Owl Carousel-->
-                    <div class="owl-carousel owl-carousel-custom" data-items="1" data-md-items="2" data-lg-items="4"
-                        data-stage-padding="15" data-dots-each="1" data-loop="true" data-dots="true" data-margin="30"
-                        data-autoplay="false">
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-19-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Cookies</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$34.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$80.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-20-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Egg bread</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">74.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$90.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-21-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Yeast bread</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$90.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$120.00</span>
-                                </div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-22-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Vegan Bread </a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$60.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$90.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="tabs-1-4">
-                    <!-- Owl Carousel-->
-                    <div class="owl-carousel owl-carousel-custom" data-items="1" data-md-items="2" data-lg-items="4"
-                        data-stage-padding="15" data-dots-each="1" data-loop="true" data-dots="true" data-margin="30"
-                        data-autoplay="false">
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-23-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Pork chops</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$34.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$80.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-24-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Beef fillet</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$74.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$90.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-25-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Beef steaks</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$90.00</span><span
-                                        class="product-price-old h7 text-light text-regular">120.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="product-featured text-center">
-                                <div class="product-featured-images"><img class="img-responsive"
-                                        src="{{ 'frontend' }}/images/home-26-270x204.png" alt="" width="270"
-                                        height="204" />
-                                </div>
-                                <div class="product-featured-rating"><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
-                                        class="icon material-icons-star_half icon-saffron icon-xs-small"></span>
-                                </div>
-                                <div class="product-featured-title">
-                                    <div class="h7 text-sbold"><a class="text-chateau-green"
-                                            href="shop-single-products.html">Pork bacon</a></div>
-                                </div>
-                                <div class="product-featured-price"><span
-                                        class="product-price-new h6 text-sbold">$60.00</span><span
-                                        class="product-price-old h7 text-light text-regular">$90.00</span></div>
-                                <div class="product-featured-block-hover"><a
-                                        class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span
-                                            class="icon fl-outicons-shopping-cart13"></span>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
