@@ -5,6 +5,8 @@
 /vendor
 /public/vendor/unisharp
 /public/frontend/images/products
+/public/frontend/images/brands
+/public/frontend/images/categories
 .env
 .env.backup
 .phpunit.result.cache

@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'position', 'is_active', 'offer_amount', 'offer_status'];
+    protected $fillable = ['name', 'slug', 'position', 'image' , 'is_active', 'offer_amount', 'offer_status'];
     
     // Store New Brand
     public static function storeNewCategory($requestData){

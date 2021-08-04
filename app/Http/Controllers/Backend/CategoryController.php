@@ -83,6 +83,7 @@ class CategoryController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required|unique:categories',
                 'position' => 'required|unique:categories',
+                'image' => 'required|dimensions:min_width=371,max_width=371,min_height=172,max_height=172',
             ]);
 
             if ($validator->fails()) {
@@ -90,6 +91,17 @@ class CategoryController extends Controller
             } else {
                 try {
                     $data = $request->all();
+
+                    // Image Processing Start
+                    if ($request->hasFile('image')) {
+                        $file = $request->file('image');
+                        $extension = $file->getClientOriginalExtension();
+                        $filename = time() . '.' . $extension;
+
+                        $file->move('frontend/images/categories/', $filename);
+                        $data['image'] = $filename;
+                    }
+                    // Image Processing End
 
                     $data['slug'] = Str::slug($request->name);
                     $store_category = Category::storeNewCategory($data);
@@ -146,10 +158,10 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         if (can('categories')) {
-            $brand = Category::find($id);
+            $category = Category::find($id);
 
             $validator = Validator::make($request->all(), [
-                'name' => 'required|unique:categories,name,' .$id,
+                'name' => 'required|unique:categories,name,' . $id,
                 'position' => 'sometimes|required|numeric|unique:categories,position,' . $id,
             ]);
 
@@ -160,6 +172,22 @@ class CategoryController extends Controller
 
                     $data = $request->all();
                     $data['slug'] = Str::slug($request->name);
+
+                    // Image Processing Start
+                    if ($category->image) {
+                        if ($request->hasFile('image')) {
+                            $file = $request->file('image');
+                            $extension = $file->getClientOriginalExtension();
+                            $filename = time() . '.' . $extension;
+
+                            $file->move('frontend/images/categories/', $filename);
+                            $data['image'] = $filename;
+                        }
+                    } else {
+                        $data['image'] = $category->image;
+                    }
+
+                    // Image Processing End
 
                     $update_category = Category::updateCategory($data, $id);
 

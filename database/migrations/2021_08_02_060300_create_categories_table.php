@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('position');
+            $table->text('image');
             $table->boolean('is_active')->default(true);
             $table->string('offer_amount')->nullable();
             $table->boolean('offer_status')->default(false);

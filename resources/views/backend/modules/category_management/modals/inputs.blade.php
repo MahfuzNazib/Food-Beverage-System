@@ -24,7 +24,7 @@
                 </div>
                 <!-- Name End -->
 
-                <!-- Phone No Start -->
+                <!-- Position Start -->
                 <div class="form-group mb-3">
                     <div class="input-group input-group-merge input-group-alternative">
                         <div class="input-group-prepend">
@@ -34,8 +34,21 @@
                             value="{{ !empty($editRow->position) ? $editRow->position : old('position') }}">
                     </div>
                 </div>
-                <!-- Phone No End -->
+                <!-- Position End -->
 
+                <!-- Image Start -->
+                <div class="form-group mb-3">
+                    <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-tablet-button"></i></i></span>
+                        </div>
+                        <input type="file" class="form-control preview_image" name="image" placeholder="Width:371, Height:172">
+                    </div>
+                    <small class="text-muted text-danger">Image Dimension -> Width:371, Height:172</small>
+                </div>
+                <!-- Image End -->
+
+                <!-- Offer Status Start -->
                 <div class="form-group mb-3">
                     <div class="input-group input-group-merge input-group-alternative">
                         <div class="input-group-prepend">
@@ -48,7 +61,9 @@
                         </select>
                     </div>
                 </div>
+                <!-- Offer Status End -->
 
+                <!-- Offer Amount Start -->
                 <div class="form-group mb-3">
                     <div class="input-group input-group-merge input-group-alternative">
                         <div class="input-group-prepend">
@@ -58,6 +73,15 @@
                             value="{{ !empty($editRow->offer_amount) ? $editRow->offer_amount : old('offer_amount') }}">
                     </div>
                 </div>
+                <!-- Offer Amount End -->
+
+                <!-- Image Prview Start -->
+                <div class="form-group mb-3">
+                    <div class="input-group input-group-merge input-group-alternative">
+                        <img src="" height="auto" width="100%" id="frame">
+                    </div>
+                </div>
+                <!-- Image Preview End -->
             </div>
         </div>
     </div>
@@ -67,3 +91,9 @@
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
+
+<script type="text/javascript">
+    $('.preview_image').on('change', function () {
+        frame.src = URL.createObjectURL(event.target.files[0]);
+    })
+</script>

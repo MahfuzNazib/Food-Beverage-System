@@ -1,6 +1,6 @@
 @extends('frontend.layout.web')
 @section('content')
-
+ 
 <section class="section">
     <div class="swiper-container swiper-slider swiper-custom" data-height="35.10416666666667%" data-min-height="375px"
         data-index-bullet="false" data-slide-effect="fade" data-autoplay="5000">
@@ -57,58 +57,23 @@
             <div class="owl-carousel owl-carousel-mod" data-dots="true" data-nav="false" data-items="1"
                 data-autoplay="false" data-sm-items="2" data-lg-items="3" data-stage-padding="15" data-loop="false"
                 data-margin="30">
+                <!-- Categories Start -->
+                @foreach($categories as $category)
                 <div class="item">
                     <div class="product-categories"><a
                             class="product-categories-block product-categories-block-variant-1"
                             href="shop-list-view.html">
                             <div class="product-categories-content">
-                                <h4>Vegetables</h4><span>14 products</span>
+                                <h4>{{ $category->name }}</h4><span>14 products</span>
                             </div>
                         </a>
                         <div class="product-categories-image"><img class="img-responsive"
-                                src="{{ 'frontend' }}/images/home-01-362x219.png" alt="" width="362" height="219" />
+                                src="{{ 'frontend' }}/images/categories/{{ $category->image }}" alt="" width="362" height="219" />
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="product-categories"><a
-                            class="product-categories-block product-categories-block-variant-2"
-                            href="shop-list-view.html">
-                            <div class="product-categories-content">
-                                <h4>Meat</h4><span>5 products</span>
-                            </div>
-                        </a>
-                        <div class="product-categories-image"><img class="img-responsive"
-                                src="{{ 'frontend' }}/images/home-02-371x173.png" alt="" width="371" height="173" />
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="product-categories"><a
-                            class="product-categories-block product-categories-block-variant-3"
-                            href="shop-list-view.html">
-                            <div class="product-categories-content">
-                                <h4>Fruits</h4><span>17 products</span>
-                            </div>
-                        </a>
-                        <div class="product-categories-image"><img class="img-responsive"
-                                src="{{ 'frontend' }}/images/home-03-371x172.png" alt="" width="371" height="172" />
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="product-categories"><a
-                            class="product-categories-block product-categories-block-variant-4"
-                            href="shop-list-view.html">
-                            <div class="product-categories-content">
-                                <h4>Milk Products</h4><span>9 products</span>
-                            </div>
-                        </a>
-                        <div class="product-categories-image"><img class="img-responsive"
-                                src="{{ 'frontend' }}/images/home-04-371x199.png" alt="" width="371" height="199" />
-                        </div>
-                    </div>
-                </div>
+                @endforeach 
+                <!-- Categories End -->
             </div>
         </div>
     </div>

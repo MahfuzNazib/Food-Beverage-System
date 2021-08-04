@@ -5,7 +5,7 @@
     <div class="container text-center">
         <h2>All Products</h2>
         <ul class="breadcrumbs-custom">
-            <li><a href="index.html">Home</a><span>/</span></li>
+            <li><a href="{{ route('home') }}">Home</a><span>/</span></li>
             <li><a href="#">Shop </a><span>/</span></li>
             <li class="active">All Products </li>
         </ul>
@@ -21,67 +21,33 @@
                         <div class="col-md-4 col-lg-12"><span class="text-uppercase big-3 text-sbold">categories</span>
                             <div class="text-subline"></div>
                             <div class="input-group-custom offset-top-20">
+                                <!-- Categories List Start -->
+                                @foreach($categories as $category)
                                 <div class="form-group">
                                     <label class="checkbox-inline checkbox-register">
                                         <input name="input-group-radio" value="checkbox-2" type="checkbox"><span
-                                            class="small-2"><span>Food</span> <span
+                                            class="small-2"><span>{{ $category->name }}</span> <span
                                                 class="text-light">(37)</span></span>
                                     </label>
                                 </div>
-                                <div class="form-group">
-                                    <label class="checkbox-inline checkbox-register">
-                                        <input name="input-group-radio" value="checkbox-2" type="checkbox"><span
-                                            class="small-2"><span>Vegetables</span> <span
-                                                class="text-light">(21)</span></span>
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="checkbox-inline checkbox-register">
-                                        <input name="input-group-radio" value="checkbox-2" type="checkbox"><span
-                                            class="small-2"><span>Fruits</span> <span
-                                                class="text-light">(12)</span></span>
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="checkbox-inline checkbox-register">
-                                        <input name="input-group-radio" value="checkbox-2" type="checkbox"><span
-                                            class="small-2"><span>Bread</span> <span
-                                                class="text-light">(7)</span></span>
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="checkbox-inline checkbox-register">
-                                        <input name="input-group-radio" value="checkbox-2" type="checkbox"><span
-                                            class="small-2"><span>Meat</span> <span
-                                                class="text-light">(15)</span></span>
-                                    </label>
-                                </div>
+                                @endforeach
+                                <!-- Categories List End -->
                             </div>
                         </div>
                         <div class="col-md-4 col-lg-12"><span class="text-uppercase big-3 text-sbold">brands</span>
                             <div class="text-subline"></div>
                             <div class="input-group-custom offset-top-20">
+                                <!-- Brands List Start -->
+                                @foreach($brands as $brand)
                                 <div class="form-group">
                                     <label class="checkbox-inline checkbox-register">
                                         <input name="input-group-radio" value="checkbox-2" type="checkbox"><span
-                                            class="small-2"><span>Organic Farm</span> <span
+                                            class="small-2"><span>{{ $brand->name }}</span> <span
                                                 class="text-light">(4)</span></span>
                                     </label>
                                 </div>
-                                <div class="form-group">
-                                    <label class="checkbox-inline checkbox-register">
-                                        <input name="input-group-radio" value="checkbox-2" type="checkbox"><span
-                                            class="small-2"><span>Fresh Market</span> <span
-                                                class="text-light">(21)</span></span>
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="checkbox-inline checkbox-register">
-                                        <input name="input-group-radio" value="checkbox-2" type="checkbox"><span
-                                            class="small-2"><span>Eco Food</span> <span
-                                                class="text-light">(12)</span></span>
-                                    </label>
-                                </div>
+                                @endforeach
+                                <!-- Brands List End -->
                             </div>
                         </div>
                         <div class="col-md-4 col-lg-12"><span class="text-uppercase big-3 text-sbold">Price</span>
@@ -120,7 +86,8 @@
                     <div class="col-md-6 col-xl-4">
                         <div class="product-featured text-center">
                             <div class="product-featured-images"><img class="img-responsive"
-                                    src="{{ asset('frontend/images/thumbnails/'.$product->thumbnail) }}" alt="" width="270" height="204" />
+                                    src="{{ asset('frontend/images/thumbnails/'.$product->thumbnail) }}" alt=""
+                                    width="270" height="204" />
                             </div>
                             <div class="product-featured-rating"><span
                                     class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
@@ -129,8 +96,7 @@
                                     class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
                                     class="icon material-icons-star_half icon-saffron icon-xs-small"></span></div>
                             <div class="product-featured-title">
-                                <div class="h7 text-sbold"><a class="text-chateau-green"
-                                        href="shop-single-products.html">{{ $product->name }}</a></div>
+                                <div class="h7 text-sbold"><a class="text-chateau-green" href="shop-single-products.html">{{ $product->name }}</a></div>
                             </div>
                             <div class="product-featured-price">
                                 <span class="product-price-new h6 text-sbold">৳ {{ $product->price }}</span>
