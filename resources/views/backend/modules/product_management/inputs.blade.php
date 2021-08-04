@@ -42,14 +42,17 @@
 
 
                     <div class="col-sm-9">
-                        <form>
+                        <form method="POST" action="{{ route('product.store') }}" accept-charset="utf-8" enctype="multipart/form-data">
+                        @csrf
                             <!-- Basic Information Start -->
                             <div id="basic_info" class="tabcontent mt-2">
                                 <label>Product Name <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control form-control-sm" name="name">
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
 
                                 <label>Product Specification <span class="text-danger">*</span></label>
                                 <textarea class="form-control" id="article-ckeditor" name="specification"></textarea>
+                                <span class="text-danger">{{ $errors->first('specification') }}</span>                            
                             </div>
                             <!-- Basic Information End -->
 
@@ -58,9 +61,13 @@
                                 <label>Short Description <span class="text-danger">*</span></label>
                                 <textarea class="form-control" id="short_description"
                                     name="short_description"></textarea>
+                                <span class="text-danger">{{ $errors->first('short_description') }}</span>                            
+                                
 
                                 <label>Description <span class="text-danger">*</span></label>
                                 <textarea class="form-control" id="description" name="description"></textarea>
+                                <span class="text-danger">{{ $errors->first('description') }}</span>
+
                             </div>
                             <!-- Product Description End -->
 
@@ -69,7 +76,9 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Thumbnail Image <span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control preview_image" name="thumbnail">
+                                        <input type="file" class="form-control preview_image" name="thumbnail" accept="image/*">
+                                        <span class="text-danger">{{ $errors->first('thumbnail') }}</span>
+
                                     </div>
 
                                     <div class="col-sm-4">
@@ -84,14 +93,14 @@
                                             <h4>Product Images</h4>
                                             <div id="form">
                                                 <input type="file" name="Image" id="image" multiple="" class="d-none"
-                                                    onchange="image_select()">
+                                                    onchange="image_select()" accept="image/*">
                                                 <button class="btn btn-sm btn-primary" type="button"
                                                     onclick="document.getElementById('image').click()">Choose
                                                     Images</button>
                                             </div>
                                         </div>
                                         <div class="card-body d-flex flex-wrap justify-content-start" id="container">
-                                            <!-- Image will be show here-->
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -99,30 +108,54 @@
                             <!-- Product Image Gallery End -->
 
 
-                            <!-- Product Startus Start -->
+                            <!-- Product Details Start -->
                             <div id="details" class="tabcontent hide-block mt-2 mr-4">
                                 
                                 <label>Category <span class="text-danger">*</span></label>
                                 <select class="form-control form-control-sm" name="category_id">
                                     <option selected disabled>Select Product Category</option>
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
                                 </select>
+                                <span class="text-danger">{{ $errors->first('category_id') }}</span>
+
 
                                 <label class="mt-3">Sub Category <span class="text-danger">*</span></label>
                                 <select class="form-control form-control-sm" name="sub_category_id">
                                     <option selected disabled>Select Product SubCategory</option>
+                                    @foreach($sub_categories as $sub_category)
+                                    <option value="{{ $sub_category->id }}">{{ $sub_category->name }}</option>
+                                    @endforeach
                                 </select>
+                                <span class="text-danger">{{ $errors->first('sub_category_id') }}</span>
+
 
                                 <label class="mt-3">Brand <span class="text-danger">*</span></label>
                                 <select class="form-control form-control-sm" name="brand_id">
                                     <option selected disabled>Select Brand</option>
+                                    @foreach($brands as $brand)
+                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                    @endforeach
                                 </select>
+                                <span class="text-danger">{{ $errors->first('brand_id') }}</span>
 
-                                <label class="mt-3">Regular Price <span class="text-danger">*</span></label>
-                                <input type="number" class="form-control form-control-sm">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="mt-3">Regular Price <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control form-control-sm" name="price">
+                                        <span class="text-danger">{{ $errors->first('price') }}</span>
+                                    </div>
 
-                                <button type="submit" class="btn btn-success ml-1 mt-3">Add Product</button>
+                                    <div class="col-sm-6">
+                                        <label class="mt-3">Quantity <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control form-control-sm" name="qnty">
+                                        <span class="text-danger">{{ $errors->first('qnty') }}</span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success ml-1 mt-3 mb-3">Add Product</button>
                             </div>
-                            <!-- Product Startus End -->
+                            <!-- Product Details End -->
                         </form>
                     </div>
                 </div>
@@ -165,7 +198,7 @@
 <script>
     var images = [];
 
-    // For Thumbnail Imag
+    
     $('.preview_image').on('change', function () {
         frame.src = URL.createObjectURL(event.target.files[0]);
     })

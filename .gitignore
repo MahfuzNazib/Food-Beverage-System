@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 /public/vendor/unisharp
+/public/frontend/images/products
 .env
 .env.backup
 .phpunit.result.cache

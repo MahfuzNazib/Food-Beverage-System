@@ -21,7 +21,7 @@
                         <select class="js-example-basic-single form-control" name="category_id">
                             <option selected disabled>Select Category</option>
                             @foreach($categories as $category)
-                            <option value="{{ $category->id }}" @if($editRow->id == $category->id) selected @endif>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>

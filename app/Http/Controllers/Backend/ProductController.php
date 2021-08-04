@@ -3,7 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
@@ -25,7 +32,12 @@ class ProductController extends Controller
     public function create()
     {
         if(can('product')){
-            return view('backend.modules.product_management.inputs');
+
+            $categories = Category::all();
+            $sub_categories = SubCategory::all();
+            $brands = Brand::all();
+
+            return view('backend.modules.product_management.inputs', compact('categories', 'sub_categories', 'brands'));
         }else{
             return view('errors.404');
         }
@@ -39,7 +51,50 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(can('product')){
+
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'description' => 'required',
+                'short_description' => 'required',
+                'thumbnail' => 'required',
+                'category_id' => 'required',
+                'brand_id' => 'required',
+                'price' => 'required',
+                'qnty' => 'required'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 422);
+            } else {
+                $data = $request->all();
+                $data['slug'] = Str::slug($request->name);
+
+                // Image Processing Start
+                if ($request->hasFile('thumbnail')) {
+                    $file = $request->file('thumbnail');
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = time() . '.' . $extension;
+
+                    $file->move('frontend/images/products/', $filename);
+                    $data['thumbnail'] = $filename;
+
+                } else {
+                    $data['thumbnail'] = null;
+                }
+                // Image Processing End
+
+                $add_product = Product::storeNewProduct($data);
+
+                if ($add_product) {
+                    return response()->json(['success' => 'Product Successfully Created'], 200);
+                } else {
+                    return response()->json(['warning' => 'Something went wrong.Try Next time'], 200);
+                }
+            }
+        }else{
+            return view('errors.404');
+        }
     }
 
     /**
