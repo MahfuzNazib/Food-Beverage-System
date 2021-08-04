@@ -75,7 +75,7 @@
                             <div id="product_gallery" class="tabcontent hide-block mt-2">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Thumbnail Image <span class="text-danger">*</span></label>
+                                        <label>Thumbnail Image (Height:204, Width:270)<span class="text-danger">*</span></label>
                                         <input type="file" class="form-control preview_image" name="thumbnail" accept="image/*">
                                         <div><span class="text-danger">{{ $errors->first('thumbnail') }}</span></div>
 

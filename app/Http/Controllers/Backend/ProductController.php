@@ -43,7 +43,7 @@ class ProductController extends Controller
                 'name' => 'required|unique:products',
                 'description' => 'required',
                 'short_description' => 'required',
-                'thumbnail' => 'required',
+                'thumbnail' => 'required|dimensions:min_width=270,max_width=270,min_height=204,max_height=204',
                 'category_id' => 'required',
                 'brand_id' => 'required',
                 'price' => 'required',
@@ -72,7 +72,6 @@ class ProductController extends Controller
                 foreach($request->file('Image') as $single_image){
                     
                     $product_image = new ProductImage();
-                    // $img = $request->file('Image');
                     $img = $single_image;
                     $extension = $img->getClientOriginalExtension();
                     $image = time(). '.' .$extension;
