@@ -36,4 +36,19 @@ class Product extends Model
             throw new \Exception($e->getMessage(), 1);               
         }
     }
+
+    public function product_image()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
 }

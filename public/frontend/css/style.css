@@ -93,6 +93,11 @@ html p a:hover {
 	width:25px;
 }
 
+.rating-size{
+	height:22px;
+	width:22px;
+}
+
 @media (min-width: 576px) {
 	.pull-xs-left {
 		float: left;

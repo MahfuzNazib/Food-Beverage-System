@@ -3,11 +3,11 @@
 <!-- Breadcrumbs-->
 <section class="section section-50 breadcrumbs-wrap custom-bg-image novi-background">
     <div class="container text-center">
-        <h2>All Products</h2>
+        <h2>Product Details</h2>
         <ul class="breadcrumbs-custom">
             <li><a href="{{ route('home') }}">Home</a><span>/</span></li>
             <li><a href="{{ route('all_products') }}">All Products </a><span>/</span></li>
-            <li class="active">Single Product Details </li>
+            <li class="active">{{ $product->name }}</li>
         </ul>
     </div>
 </section>
@@ -18,80 +18,68 @@
             <div class="row row-50 row-sm-90 text-left justify-content-sm-center">
                 <div class="col-md-8 col-lg-6">
                     <div class="product-image">
-                        <div class="image"><img class="img-responsive product-image-area"
-                                src="images/single-product-01-443x365.png" alt=""></div>
+                        <div class="image">
+                            <img class="img-responsive product-image-area" src="{{ asset('frontend/images/thumbnails/'.$product->thumbnail) }}" alt="">
+                        </div>
+
                         <ul class="product-thumbnails">
-                            <li class="active" data-large-image="images/single-product-01-443x365.png"><img
-                                    class="img-responsive" src="images/single-product-01-78x62.png" alt="" width="84"
-                                    height="84"></li>
-                            <li data-large-image="images/single-product-02-443x365.png"><img class="img-responsive"
-                                    src="images/single-product-02-78x62.png" alt="" width="84" height="84"></li>
-                            <li data-large-image="images/single-product-03-309x236.png"><img class="img-responsive"
-                                    src="images/single-product-03-78x62.png" alt="" width="84" height="84"></li>
+                            @foreach($product->product_image as $images)
+                            <li data-large-image="{{ asset('frontend/images/product_images/'.$images->image) }}">
+                            <img class="img-responsive" src="{{ asset('frontend/images/product_images/'.$images->image) }}" alt="" width="84" height="84"></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-6 text-left offset-md-top-10">
                     <!-- Product Brand-->
-                    <p class="product-brand text-italic text-light">Organic Farm</p>
+                    <p class="product-brand text-italic text-light">{{ $product->category['name'] }}</p>
                     <!-- Product Title-->
                     <h4 class="product-title offset-top-0 font-default text-sbold"><a class="text-content"
-                            href="#">Bananas</a></h4>
+                            href="#">{{ $product->name }}</a></h4>
                     <!-- Product Rating-->
-                    <div class="product-rating offset-top-20"><span
-                            class="mdi novi-icon mdi-star icon-xs-small"></span><span
-                            class="mdi novi-icon mdi-star icon-xs-small"></span><span
-                            class="mdi novi-icon mdi-star icon-xs-small"></span><span
-                            class="mdi novi-icon mdi-star-half icon-xs-small"></span><span
-                            class="mdi novi-icon mdi-star-outline icon-xs-small"></span><span
-                            class="product-review-count text-light">4 customer reviews</span></div>
+                    <div class="product-rating offset-top-20">
+                        <span><img class="rating-size" src="{{ asset('frontend/images/icons/rating.png') }}"></span>
+                        <span><img class="rating-size" src="{{ asset('frontend/images/icons/rating.png') }}"></span>
+                        <span><img class="rating-size" src="{{ asset('frontend/images/icons/rating.png') }}"></span>
+                        <span><img class="rating-size" src="{{ asset('frontend/images/icons/rating.png') }}"></span>
+                        <span><img class="rating-size" src="{{ asset('frontend/images/icons/rating.png') }}"></span>
+                        <span class="product-review-count text-light">4 customer reviews</span>
+                    </div>
                     <!-- Responsive-tabs-->
                     <div class="card-group-custom card-group-corporate" id="accordion1" role="tablist"
                         aria-multiselectable="false">
                         <!--Bootstrap card-->
                         <article class="card card-custom card-corporate">
                             <div class="card-header" role="tab">
-                                <div class="card-title"><a id="accordion1-card-head-eaiyedmf" data-toggle="collapse"
-                                        data-parent="#accordion1" href="#accordion1-card-body-axnlxiec"
+                                <div class="card-title"><a id="accordion1-card-head-eaiyedmf" data-toggle="collapse" data-parent="#accordion1" href="#accordion1-card-body-axnlxiec" 
                                         aria-controls="accordion1-card-body-axnlxiec" aria-expanded="true"
-                                        role="button">Description
-                                        <div class="card-arrow"></div></a></div>
+                                        role="button">
+                                        Description
+                                        <div class="card-arrow"></div></a>
+                                </div>
                             </div>
                             <div class="collapse show" id="accordion1-card-body-axnlxiec"
                                 aria-labelledby="accordion1-card-head-eaiyedmf" data-parent="#accordion1"
                                 role="tabpanel">
                                 <div class="card-body">
-                                    <p>Bananas are one of the most popular fruits, due to their sweet taste and
-                                        high nutrient content. They are an excellent source of vitamin B6 and
-                                        fiber.</p>
-                                </div>
-                            </div>
-                        </article>
-                        <!--Bootstrap card-->
-                        <article class="card card-custom card-corporate">
-                            <div class="card-header" role="tab">
-                                <div class="card-title"><a class="collapsed" id="accordion1-card-head-etqdyhbi"
-                                        data-toggle="collapse" data-parent="#accordion1"
-                                        href="#accordion1-card-body-hckquppi"
-                                        aria-controls="accordion1-card-body-hckquppi" aria-expanded="false"
-                                        role="button">Delivery &amp; Returns
-                                        <div class="card-arrow"></div></a></div>
-                            </div>
-                            <div class="collapse" id="accordion1-card-body-hckquppi"
-                                aria-labelledby="accordion1-card-head-etqdyhbi" data-parent="#accordion1"
-                                role="tabpanel">
-                                <div class="card-body">
-                                    <p>We deliver our goods worldwide. No matter where you live, your order will
-                                        be shipped in time and delivered right to your door or to any other
-                                        location you have stated. The packages are handled with utmost care, so
-                                        the ordered products will be handed to you safe and sound, just like you
-                                        expect them to be.</p>
+                                    {!! $product->short_description !!}
                                 </div>
                             </div>
                         </article>
                     </div>
+
+                    <div>
+                        <p>Availability : 
+                        @if($product->qnty > 10)
+                        <span class="text-success">Available </span>
+                        @else
+                        <span class="text-danger">Out of Stock </span>
+                        @endif
+                        </p>
+                    </div>
+
                     <div class="product-price offset-top-30"> <span
-                            class="product-price-new h5 text-bold text-content">$34.00</span><span
+                            class="product-price-new h5 text-bold text-content">{{ $product->price }} BDT</span><span
                             class="product-price-old h6 text-light text-medium">$80.00</span></div>
                     <div class="offset-top-5">
                         <div class="form-group product-number product-number-mod-1">

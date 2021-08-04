@@ -83,6 +83,7 @@
                 <div class="row">
                     <!-- Product Card Start-->
                     @foreach($products as $product)
+                    <a href="{{ route('single-product', $product->slug) }}">
                     <div class="col-md-6 col-xl-4">
                         <div class="product-featured text-center">
                             <div class="product-featured-images"><img class="img-responsive"
@@ -96,17 +97,23 @@
                                     class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
                                     class="icon material-icons-star_half icon-saffron icon-xs-small"></span></div>
                             <div class="product-featured-title">
-                                <div class="h7 text-sbold"><a class="text-chateau-green" href="{{ route('single-product') }}">{{ $product->name }}</a></div>
+                                <div class="h7 text-sbold"><a class="text-chateau-green" href="{{ route('single-product', $product->slug) }}">{{ $product->name }}</a></div>
                             </div>
                             <div class="product-featured-price">
                                 <span class="product-price-new h6 text-sbold">৳ {{ $product->price }}</span>
                                 <!-- <span class="product-price-old h7 text-light text-regular">৳ {{ $product->price }}</span> -->
                             </div>
-                            <div class="product-featured-block-hover"><a class="btn btn-icon btn-icon-left btn-success"
-                                    href="shop-cart.html"><span class="icon fl-outicons-shopping-cart13"></span>Add to
-                                    cart</a></div>
+                            <div class="product-featured-block-hover">
+                                <a class="btn btn-icon btn-icon-left btn-success"
+                                    href="shop-cart.html">
+                                    <span> 
+                                        <img src="{{ 'frontend' }}/images/icons/shopping-cart-w.png" class="icon-size"> 
+                                    </span>Add to cart
+                                </a>
+                            </div>
                         </div>
                     </div>
+                    </a>
                     @endforeach
                     <!-- Product Card End -->
                 </div>

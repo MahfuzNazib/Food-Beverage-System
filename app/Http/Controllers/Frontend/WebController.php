@@ -28,8 +28,10 @@ class WebController extends Controller
     }
 
     // Single Product 
-    public function single_product(){
-        return view('frontend.pages.single-product');
+    public function single_product($slug){
+
+        $product = Product::with('category', 'product_image')->where('slug', $slug)->first();
+        return view('frontend.pages.single-product', compact('product'));
     }
     // Contact Page
     public function contact_us(){

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 // Landing page routes
 Route::get('/', [WebController::class, 'home'])->name('home');
 Route::get('/all-products', [WebController::class, 'all_products'])->name('all_products');
-Route::get('/single-products', [WebController::class, 'single_product'])->name('single-product');
+Route::get('/single-product/{slug}', [WebController::class, 'single_product'])->name('single-product');
 Route::get('/contact-us', [WebController::class, 'contact_us'])->name('contact-us');
 
 
