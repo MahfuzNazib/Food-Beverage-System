@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
+    // Home Page
     public function home()
     {
         $categories = Category::orderBy('position', 'asc')->get();
@@ -17,6 +18,7 @@ class WebController extends Controller
         return view('frontend.pages.home', compact('categories', 'featured_products'));
     }
 
+    // All Product
     public function all_products(){
         $products = Product::select('id', 'name', 'slug', 'price', 'thumbnail')->get();
         $categories = Category::select('id', 'name', 'slug')->get();
@@ -25,6 +27,11 @@ class WebController extends Controller
         return view('frontend.pages.all-products', compact('products', 'categories', 'brands'));
     }
 
+    // Single Product 
+    public function single_product(){
+        return view('frontend.pages.single-product');
+    }
+    // Contact Page
     public function contact_us(){
         return view('frontend.pages.contact-us');
     }

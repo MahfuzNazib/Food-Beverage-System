@@ -96,7 +96,7 @@
                                     class="icon material-icons-grade icon-saffron icon-xs-small"></span><span
                                     class="icon material-icons-star_half icon-saffron icon-xs-small"></span></div>
                             <div class="product-featured-title">
-                                <div class="h7 text-sbold"><a class="text-chateau-green" href="shop-single-products.html">{{ $product->name }}</a></div>
+                                <div class="h7 text-sbold"><a class="text-chateau-green" href="{{ route('single-product') }}">{{ $product->name }}</a></div>
                             </div>
                             <div class="product-featured-price">
                                 <span class="product-price-new h6 text-sbold">৳ {{ $product->price }}</span>
