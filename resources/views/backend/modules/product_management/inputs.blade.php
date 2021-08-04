@@ -47,12 +47,12 @@
                             <!-- Basic Information Start -->
                             <div id="basic_info" class="tabcontent mt-2">
                                 <label>Product Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control form-control-sm" name="name">
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                <input type="text" class="form-control form-control-sm" name="name" value="{{ old('name') }}">
+                                <div><span class="text-danger">{{ $errors->first('name') }}</span></div>
 
-                                <label>Product Specification <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="article-ckeditor" name="specification"></textarea>
-                                <span class="text-danger">{{ $errors->first('specification') }}</span>                            
+                                <label class="mt-2">Product Specification <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="specification" name="specification">{{ old('specification') }}</textarea>
+                                <div><span class="text-danger">{{ $errors->first('specification') }}</span></div>                            
                             </div>
                             <!-- Basic Information End -->
 
@@ -60,13 +60,13 @@
                             <div id="descriptions" class="tabcontent hide-block mt-2">
                                 <label>Short Description <span class="text-danger">*</span></label>
                                 <textarea class="form-control" id="short_description"
-                                    name="short_description"></textarea>
-                                <span class="text-danger">{{ $errors->first('short_description') }}</span>                            
+                                    name="short_description">{{ old('short_description') }}</textarea>
+                                <div><span class="text-danger">{{ $errors->first('short_description') }}</span></div>                            
                                 
 
-                                <label>Description <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="description" name="description"></textarea>
-                                <span class="text-danger">{{ $errors->first('description') }}</span>
+                                <label class="mt-2">Description <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
+                                <div><span class="text-danger">{{ $errors->first('description') }}</span></div>
 
                             </div>
                             <!-- Product Description End -->
@@ -77,7 +77,7 @@
                                     <div class="col-sm-6">
                                         <label>Thumbnail Image <span class="text-danger">*</span></label>
                                         <input type="file" class="form-control preview_image" name="thumbnail" accept="image/*">
-                                        <span class="text-danger">{{ $errors->first('thumbnail') }}</span>
+                                        <div><span class="text-danger">{{ $errors->first('thumbnail') }}</span></div>
 
                                     </div>
 
@@ -92,7 +92,7 @@
                                         <div class="card-header d-flex justify-content-between">
                                             <h4>Product Images</h4>
                                             <div id="form">
-                                                <input type="file" name="Image" id="image" multiple="" class="d-none"
+                                                <input type="file" name="Image[]" id="image" multiple="" class="d-none"
                                                     onchange="image_select()" accept="image/*">
                                                 <button class="btn btn-sm btn-primary" type="button"
                                                     onclick="document.getElementById('image').click()">Choose
@@ -115,42 +115,42 @@
                                 <select class="form-control form-control-sm" name="category_id">
                                     <option selected disabled>Select Product Category</option>
                                     @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" @if(old('category_id') == $category->id) selected="selected" @endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger">{{ $errors->first('category_id') }}</span>
+                                <div><span class="text-danger">{{ $errors->first('category_id') }}</span></div>
 
 
                                 <label class="mt-3">Sub Category <span class="text-danger">*</span></label>
                                 <select class="form-control form-control-sm" name="sub_category_id">
                                     <option selected disabled>Select Product SubCategory</option>
                                     @foreach($sub_categories as $sub_category)
-                                    <option value="{{ $sub_category->id }}">{{ $sub_category->name }}</option>
+                                    <option value="{{ $sub_category->id }}" @if(old('sub_category_id') == $sub_category->id) selected="selected" @endif>{{ $sub_category->name }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger">{{ $errors->first('sub_category_id') }}</span>
+                                <div><span class="text-danger">{{ $errors->first('sub_category_id') }}</span></div>
 
 
                                 <label class="mt-3">Brand <span class="text-danger">*</span></label>
                                 <select class="form-control form-control-sm" name="brand_id">
                                     <option selected disabled>Select Brand</option>
                                     @foreach($brands as $brand)
-                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                    <option value="{{ $brand->id }}" @if(old('brand_id') == $brand->id) selected="selected" @endif>{{ $brand->name }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger">{{ $errors->first('brand_id') }}</span>
+                                <div><span class="text-danger">{{ $errors->first('brand_id') }}</span></div>
 
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label class="mt-3">Regular Price <span class="text-danger">*</span></label>
                                         <input type="number" class="form-control form-control-sm" name="price">
-                                        <span class="text-danger">{{ $errors->first('price') }}</span>
+                                        <div><span class="text-danger">{{ $errors->first('price') }}</span></div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label class="mt-3">Quantity <span class="text-danger">*</span></label>
                                         <input type="number" class="form-control form-control-sm" name="qnty">
-                                        <span class="text-danger">{{ $errors->first('qnty') }}</span>
+                                        <div><span class="text-danger">{{ $errors->first('qnty') }}</span></div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-success ml-1 mt-3 mb-3">Add Product</button>
@@ -189,20 +189,21 @@
 </script>
 
 <script>
-    CKEDITOR.replace('article-ckeditor');
+    CKEDITOR.replace('specification');
     CKEDITOR.replace('short_description');
     CKEDITOR.replace('description');
-
 </script>
 
 <script>
-    var images = [];
-
     
+
+    // For Thumnail Image Preview
     $('.preview_image').on('change', function () {
         frame.src = URL.createObjectURL(event.target.files[0]);
     })
 
+    //For Multiple Image Inputs and Previews
+    var images = [];
     function image_select() {
         var image = document.getElementById('image').files;
         for (i = 0; i < image.length; i++) {
