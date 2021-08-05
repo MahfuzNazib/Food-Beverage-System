@@ -134,7 +134,7 @@
                                     href="{{ route('get-cart') }}"><span> <img
                                             src="{{ 'frontend' }}/images/icons/shopping-cart.png" height="25px"
                                             width="25px">
-                                    </span><span class="text-bold">$124.00</span></a></span></li>
+                                    </span></a></span></li>
                     </ul>
                 </div>
             </div>

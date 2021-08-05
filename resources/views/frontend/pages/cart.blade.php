@@ -20,40 +20,77 @@
                     <h6>Product Details</h6>
                     <table class="table table-sm">
                         <thead>
-                            <th>Sl</th>
                             <th>Image</th>
                             <th>Product Name</th>
                             <th>Quantity</th>
+                            <th>UnitPrice</th>
                             <th>Amount</th>
                             <th>Remove</th>
                         </thead>
 
                         <tbody>
-                            @php
-                                $i = 1;
-                            @endphp
+                            @if(!empty($cart_data))
+                            <?php 
+                                $sub_total = 0;
+                            ?>
                             @foreach($cart_data as $cart)
                                 <tr>
-                                    <td>{{ $i }}</td>
                                     <td>
-                                        <img src="{{ asset('frontend') }}/images/thumbnails/{{$cart['thumbnail']}}" height="100px" width="100px">
+                                        <img src="{{ asset('frontend') }}/images/thumbnails/{{$cart['thumbnail']}}" height="100px" width="auto">
                                     </td>
-                                    <td>{{ $cart['name'] }}</td>
-                                    <td>
+                                    <td class="align-middle">{{ $cart['name'] }}</td>
+                                    <td class="align-middle">
                                         <input type="number" class="form-control form-control-sm" value="{{ $cart['quantity'] }}">
                                     </td>
-                                    <td>{{ $cart['quantity'] * $cart['price'] }}</td>
-                                    <td>
+                                    <td class="align-middle">{{ $cart['price'] }}</td>
+                                    <td class="align-middle">{{ $cart['quantity'] * $cart['price'] }}</td>
+                                    <td class="align-middle">
                                         <button class="btn btn-danger btn-sm">X</button>
                                     </td>
+                                    <!-- Calculating Total Sub total -->
+                                    <?php 
+                                        $sub_total += $cart['quantity'] * $cart['price'];
+                                    ?>
                                 </tr>
                             @endforeach
+
+                            @else
+                            <tr>
+                                <td colspan="6">
+                                    <center>
+                                        <span class="badge badge-danger">No Product Found</span>
+                                    </center>
+                                </td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-4 bg-card">
                     <h6>Order Details </h6>
+                    <hr>
+                    @if(!empty($cart_data))
+                        <table class="table">
+                            <tr class="text-bold">
+                                <td>Total product</td>
+                                <td>{{ $total_product }}</td>
+                            </tr>
+
+                            <tr class="text-bold">
+                                <td>Sub Total</td>
+                                <td>{{ $sub_total }} BDT</td>
+                            </tr>
+                        </table>
+                            <button class="btn btn-success">Confirm Order</button>
+                        </div>
+                        <!-- Total Sub Total End -->
+
+                    @else
+                    <span class="badge badge-danger">
+                        No Order Details
+                    </span>
+                    @endif
                 </div>
             </div>
         </div>

@@ -64,14 +64,9 @@ class CratController extends Controller
     // Get Cart 
     public function get_cart(Request $request){
         $cart = $request->session()->get('cart');
-        // return gettype($cart);
-        // return view('frontend.pages.cart', compact('cart'));
-        return view('frontend.pages.cart', ['cart_data' => $cart]);
 
-        // foreach($cart as $c){
-        //     $c['name'];
-        //     return $c['name'];
-        // }
-        // return $cart;
+        // Total Product Count
+        $total_product = count($cart);
+        return view('frontend.pages.cart', ['cart_data' => $cart, 'total_product' => $total_product]);
     }
 }
