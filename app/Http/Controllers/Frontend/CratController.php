@@ -62,10 +62,7 @@ class CratController extends Controller
     // Get Cart 
     public function get_cart(Request $request){
         $cart = $request->session()->get('cart');
-
-        // Total Product Count
-        $total_product = count($cart);
-        return view('frontend.pages.cart', ['cart_data' => $cart, 'total_product' => $total_product]);
+        return view('frontend.pages.cart', ['cart_data' => $cart]);
     }
 
     // Remove Product From Cart
@@ -76,4 +73,6 @@ class CratController extends Controller
 
         return response()->json(['success' => 'Product Removed'],200);
     }
+
+   
 }

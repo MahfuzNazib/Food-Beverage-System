@@ -74,7 +74,7 @@
                         <table class="table">
                             <tr class="text-bold">
                                 <td>Total product</td>
-                                <td>{{ $total_product }}</td>
+                                <td></td>
                             </tr>
 
                             <tr class="text-bold">
@@ -82,7 +82,9 @@
                                 <td>{{ $sub_total }} BDT</td>
                             </tr>
                         </table>
-                            <button class="btn btn-success">Confirm Order</button>
+                            <a href="{{ route('checkout') }}">
+                                <button class="btn btn-success">Confirm Order</button>
+                            </a>
                         </div>
                         <!-- Total Sub Total End -->
 
