@@ -57,9 +57,7 @@ class CratController extends Controller
         ];
         session()->put('cart', $cart);
         return response()->json(['success' => 'Product added to cart successfully!'], 200);
-
     }
-
 
     // Get Cart 
     public function get_cart(Request $request){
@@ -68,5 +66,14 @@ class CratController extends Controller
         // Total Product Count
         $total_product = count($cart);
         return view('frontend.pages.cart', ['cart_data' => $cart, 'total_product' => $total_product]);
+    }
+
+    // Remove Product From Cart
+    public function item_remove($id, Request $request){
+        session()->forget($id);
+
+        $cart = $request->session()->get('cart');
+
+        return response()->json(['success' => 'Product Removed'],200);
     }
 }

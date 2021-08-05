@@ -12,5 +12,6 @@ Route::get('/contact-us', [WebController::class, 'contact_us'])->name('contact-u
 // Cart Routes
 Route::get('/add-to-cart/{id}/{qnty}', [CratController::class, 'add_to_cart'])->name('add-to-cart');
 Route::get('/get-cart', [CratController::class, 'get_cart'])->name('get-cart');
+Route::get('item-remove/{id}', [CratController::class, 'item_remove'])->name('item-remove');
 
 ?>

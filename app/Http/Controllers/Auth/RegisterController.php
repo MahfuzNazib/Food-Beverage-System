@@ -40,7 +40,7 @@ class RegisterController extends Controller
         $user_details->email = $request->email;
         $user_details->save();
 
-        return redirect()->route('home');
+        return redirect()->route('login.show');
 
     }
 }

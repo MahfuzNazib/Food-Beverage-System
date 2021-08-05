@@ -38,7 +38,11 @@ class LoginController extends Controller
             }
         }elseif( $user ){
             if(auth('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)){
-                return redirect()->route('dashboard');
+                if($user->role_id == 99){
+                    return "Normal User Dashboard";
+                }else{
+                    return redirect()->route('dashboard');
+                }
             }else{
                 return redirect()->route('login.show')->with('message', 'Invalid Email or Password');
             }

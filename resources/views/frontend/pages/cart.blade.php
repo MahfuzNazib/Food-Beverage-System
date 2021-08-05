@@ -45,7 +45,7 @@
                                     <td class="align-middle">{{ $cart['price'] }}</td>
                                     <td class="align-middle">{{ $cart['quantity'] * $cart['price'] }}</td>
                                     <td class="align-middle">
-                                        <button class="btn btn-danger btn-sm">X</button>
+                                        <button class="btn btn-danger btn-sm" onclick="itemRemove({{ $cart['id'] }})">X</button>
                                     </td>
                                     <!-- Calculating Total Sub total -->
                                     <?php 
