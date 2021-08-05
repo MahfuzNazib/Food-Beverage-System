@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Backend\BrandController;
@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Route;
 
 // Frontend Routes
 require_once 'frontend/frontend.php';
+
+// Registration 
+Route::get('/registration', [RegisterController::class, 'registration'])->name('registration.show');
+Route::post('/registration', [RegisterController::class, 'registration_store'])->name('registration.store');
 
 // Login Route Start
 Route::get('/login', [LoginController::class, 'login_show'])->name('login.show');

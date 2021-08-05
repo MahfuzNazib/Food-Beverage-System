@@ -98,6 +98,10 @@ html p a:hover {
 	width:22px;
 }
 
+.register{
+	padding:28px 400px 28px 400px;
+}
+
 @media (min-width: 576px) {
 	.pull-xs-left {
 		float: left;

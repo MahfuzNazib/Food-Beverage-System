@@ -15,7 +15,16 @@ class CreateUserDetailsTable extends Migration
     {
         Schema::create('user_details', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('email');
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->text('address')->nullable();
+            $table->date('dob')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
