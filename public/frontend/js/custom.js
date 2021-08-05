@@ -1,7 +1,17 @@
 
     function addToCart(product_id){
+        var quantity = $('#quantity').val();
+        if(!quantity){
+            qnty = 1;
+        }else if(quantity <=0 ){
+            swal("", "Invalid Product quantity", "error");
+            return false;
+        }
+        else{
+            qnty = quantity;
+        }
         $.ajax({
-            url: "/add-to-cart/"+product_id,
+            url: "/add-to-cart/"+product_id+"/"+qnty,
             method: 'GET',
             data:{},
             success:function(response){

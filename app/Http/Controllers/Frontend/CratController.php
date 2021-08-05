@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CratController extends Controller
 {
     // Add To Cart Start
-    public function add_to_cart($id)
+    public function add_to_cart($id, $qnty)
     {
         $product = Product::find($id);
 
@@ -27,8 +27,9 @@ class CratController extends Controller
         if (!$cart) {
             $cart = [
                 $id => [
+                    "id" => $product->id,
                     "name" => $product->name,
-                    "quantity" => 1,
+                    "quantity" => $qnty,
                     "price" => $product->price,
                     "thumbnail" => $product->thumbnail,
                 ],
@@ -48,8 +49,9 @@ class CratController extends Controller
 
         // if item not exist in cart then add to cart with quantity = 1
         $cart[$id] = [
+            "id" => $product->id,
             "name" => $product->name,
-            "quantity" => 1,
+            "quantity" => $qnty,
             "price" => $product->price,
             "thumbnail" => $product->thumbnail,
         ];
@@ -62,7 +64,14 @@ class CratController extends Controller
     // Get Cart 
     public function get_cart(Request $request){
         $cart = $request->session()->get('cart');
+        // return gettype($cart);
+        // return view('frontend.pages.cart', compact('cart'));
+        return view('frontend.pages.cart', ['cart_data' => $cart]);
 
-        return $cart;
+        // foreach($cart as $c){
+        //     $c['name'];
+        //     return $c['name'];
+        // }
+        // return $cart;
     }
 }

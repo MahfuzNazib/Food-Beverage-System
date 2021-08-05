@@ -10,7 +10,7 @@ Route::get('/single-product/{slug}', [WebController::class, 'single_product'])->
 Route::get('/contact-us', [WebController::class, 'contact_us'])->name('contact-us');
 
 // Cart Routes
-Route::get('/add-to-cart/{id}', [CratController::class, 'add_to_cart'])->name('add-to-cart');
+Route::get('/add-to-cart/{id}/{qnty}', [CratController::class, 'add_to_cart'])->name('add-to-cart');
 Route::get('/get-cart', [CratController::class, 'get_cart'])->name('get-cart');
 
 ?>

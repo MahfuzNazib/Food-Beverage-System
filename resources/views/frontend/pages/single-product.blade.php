@@ -86,14 +86,12 @@
                             <label class="text-light">Quantity:</label>
                             <div class="stepper stepper-mod preffix-left-7 postfix-right-20">
                                 <input class="form-control input-sm form-control-impressed" type="number"
-                                    data-zeros="true" value="1" min="1" max="20">
+                                    data-zeros="true" value="1" min="1" max="20" id="quantity">
                             </div>
                         </div>
                         <!-- Product Add To cart-->
                         <button class="btn btn-icon btn-icon-left btn-success" onclick="addToCart({{ $product->id }})">
-                            <span> 
-                                <img src="{{ 'frontend' }}/images/icons/shopping-cart-w.png" class="icon-size"> 
-                            </span>Add to cart
+                            Add to cart
                         </button>
                     </div>
                 </div>
