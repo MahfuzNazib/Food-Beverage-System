@@ -224,9 +224,12 @@
                                     <!-- <span class="product-price-old h7 text-light text-regular">$80.00</span> -->
                                 </div>
 
-                                <div class="product-featured-block-hover"><a class="btn btn-icon btn-icon-left btn-success" href="shop-cart.html"><span> <img
-                                                src="{{ 'frontend' }}/images/icons/shopping-cart-w.png"
-                                                class="icon-size"> </span>Add to cart</a>
+                                <div class="product-featured-block-hover">
+                                    <button class="btn btn-icon btn-icon-left btn-success" onclick="addToCart({{ $feature_product->id }})">
+                                        <span> 
+                                            <img src="{{ 'frontend' }}/images/icons/shopping-cart-w.png" class="icon-size"> 
+                                        </span>Add to cart
+                                    </button>
                                 </div>
                             </div>
                         </div>

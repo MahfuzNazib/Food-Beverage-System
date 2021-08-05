@@ -11,16 +11,52 @@ use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
-    
+
     public function index()
     {
-        //
+        if (can('product')) {
+            $products = Product::select('id', 'slug', 'name', 'thumbnail', 'is_featured', 'is_active')->get();
+            return view('backend.modules.product_management.index', compact('products'));
+        } else {
+            return view('errors.404');
+        }
+
     }
 
-    
+    public function data()
+    {
+        if (can('product')) {
+            $products = Product::orderBy('id', 'desc')->get();
+            return DataTables::of($products)
+                ->rawColumns(['action', 'is_active'])
+                ->editColumn('is_active', function (Product $products) {
+                    if ($products->is_active == true) {
+                        return '<p class="badge badge-success">Active</p>';
+                    } else {
+                        return '<p class="badge badge-danger">Inactive</p>';
+                    }
+                })
+                ->addColumn('action', function (Product $products) {
+                    return '
+                    <a data-toggle="modal" data-content="' . route('product.edit', $products->id) . '"  href="#modal1" >
+                        <button class="btn btn-info btn-sm">Edit</button>
+                    </a>
+
+                    <a data-toggle="modal" data-content="' . route('product.show', $products->id) . '"  href="#modal1" >
+                        <button class="btn btn-success btn-sm">View</button>
+                    </a>
+                ';
+                })
+                ->make(true);
+        } else {
+            return view("errors.404");
+        }
+    }
+
     public function create()
     {
         if (can('product')) {
@@ -35,7 +71,6 @@ class ProductController extends Controller
         }
     }
 
-    
     public function store(Request $request)
     {
         if (can('product')) {
@@ -66,14 +101,14 @@ class ProductController extends Controller
             $add_product = Product::storeNewProduct($data);
 
             // Store Product Multiple Images on product_images DB Table
-            if($request->hasFile('Image')){
+            if ($request->hasFile('Image')) {
 
-                foreach($request->file('Image') as $single_image){
-                    
+                foreach ($request->file('Image') as $single_image) {
+
                     $product_image = new ProductImage();
                     $img = $single_image;
                     $extension = $img->getClientOriginalExtension();
-                    $image = time(). '.' .$extension;
+                    $image = time() . '.' . $extension;
                     $img->move('frontend/images/product_images/', $image);
 
                     $product_image->product_id = $add_product->id;
@@ -96,25 +131,21 @@ class ProductController extends Controller
         }
     }
 
-    
     public function show($id)
     {
         //
     }
 
-    
     public function edit($id)
     {
         //
     }
 
-   
     public function update(Request $request, $id)
     {
         //
     }
 
-    
     public function destroy($id)
     {
         //

@@ -14,6 +14,7 @@
 
     <!-- Include all CSS -->
     @include('frontend.layout.includes.css')
+    
 
 </head>
 

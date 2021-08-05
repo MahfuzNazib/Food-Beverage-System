@@ -131,7 +131,7 @@
                             </form>
                         </li>
                         <li class="rd-navbar-cart-wrap"><span class="rd-navbar-cart"><a class="icon icon-sm icon-gray"
-                                    href="shop-cart.html"><span> <img
+                                    href="{{ route('get-cart') }}"><span> <img
                                             src="{{ 'frontend' }}/images/icons/shopping-cart.png" height="25px"
                                             width="25px">
                                     </span><span class="text-bold">$124.00</span></a></span></li>

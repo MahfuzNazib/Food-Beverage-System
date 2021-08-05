@@ -62,6 +62,12 @@
             </div>
 
             <div class="col-lg-9">
+                <!-- Success Message Show -->
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{session('success')}}
+                    </div>
+                @endif
                 <div class="toolbar-shop">
                     <div class="toolbar-shop-sorter"><a class="toolbar-shop-icon active"
                             href="shop-grid-view.html"><span class="icon-sm mdi novi-icon mdi-view-module"></span></a><a
@@ -81,6 +87,7 @@
                     </div>
                 </div>
                 <div class="row">
+
                     <!-- Product Card Start-->
                     @foreach($products as $product)
                     <a href="{{ route('single-product', $product->slug) }}">
@@ -104,12 +111,11 @@
                                 <!-- <span class="product-price-old h7 text-light text-regular">৳ {{ $product->price }}</span> -->
                             </div>
                             <div class="product-featured-block-hover">
-                                <a class="btn btn-icon btn-icon-left btn-success"
-                                    href="shop-cart.html">
+                                <button class="btn btn-icon btn-icon-left btn-success" onclick="addToCart({{ $product->id }})">
                                     <span> 
                                         <img src="{{ 'frontend' }}/images/icons/shopping-cart-w.png" class="icon-size"> 
                                     </span>Add to cart
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -134,3 +140,4 @@
     </div>
 </section>
 @endsection
+

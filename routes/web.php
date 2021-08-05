@@ -4,15 +4,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Frontend\WebController;
 use Illuminate\Support\Facades\Route;
 
-// Landing page routes
-Route::get('/', [WebController::class, 'home'])->name('home');
-Route::get('/all-products', [WebController::class, 'all_products'])->name('all_products');
-Route::get('/single-product/{slug}', [WebController::class, 'single_product'])->name('single-product');
-Route::get('/contact-us', [WebController::class, 'contact_us'])->name('contact-us');
-
+// Frontend Routes
+require_once 'frontend/frontend.php';
 
 // Login Route Start
 Route::get('/login', [LoginController::class, 'login_show'])->name('login.show');
