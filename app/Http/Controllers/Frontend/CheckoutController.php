@@ -13,23 +13,32 @@ class CheckoutController extends Controller
     // Checkout
     public function checkout(Request $request)
     {
-        $cart = $request->session()->get('cart');
-        return view('frontend.pages.checkout');
+        $carts = $request->session()->get('cart');
+
+        // Calculating SubTotal Amount
+        $total_amount = 0;
+        if ($carts) {
+            foreach ($carts as $cart) {
+                $total_amount += $cart['quantity'] * $cart['price'];
+            }
+        }
+
+        return view('frontend.pages.checkout', compact('total_amount'));
     }
 
     // Place Order
     public function place_order(Request $request)
     {
         $user = auth()->user();
-        
+
         $cart = $request->session()->get('cart');
 
         $order = new Order();
         $order->order_id = rand(00000000, 99999999);
 
-        if($user){
+        if ($user) {
             $order->customer_id = $user->id;
-        }else{
+        } else {
             $order->customer_id = null;
         }
 
@@ -39,19 +48,50 @@ class CheckoutController extends Controller
         $order->city = $request->city;
         $order->note = $request->note;
         $order->shipping_address = $request->shipping_address;
-        $order->amount = 200;
-        $order->payble_amount = 200;
+        $order->amount = $request->amount;
+        $order->payble_amount = $request->payble_amount;
+        if ($request->type == 'home') {
+            $order->shipping_charge = $request->shipping_charge;
+        } else {
+            $request->outlet_id = $request->outlet_id;
+            $request->pickup_time = $request->pickup_time;
+        }
         if ($request->paid_by == 'Online') {
             return $this->sslCommerz($request, $order);
         } else {
-            $order->paid_by = "Cash";
+            return $this->cod_payment($request, $order);
         }
 
         $order->save();
         $request->session()->forget('cart');
 
-        return back();
+        return redirect()->route('home');
 
+    }
+
+    // Cash on Delivry Payment
+    public function cod_payment($request, $order)
+    {
+        $order->paid_by = "Cash";
+        $order->order_status = 'Pending';
+        $order->is_active = true;
+        $order->payment_status = 'Pending';
+
+        if ($order->save()) {
+            $carts = $request->session()->get('cart');
+            foreach ($carts as $cart) {
+                $order_product = new OrderProducts();
+                $order_product->order_id = $order->id;
+                $order_product->product_id = $cart['id'];
+                $order_product->product_quantity = $cart['quantity'];
+                $order_product->unit_price = $cart['price'];
+                $order_product->total_amount = $cart['quantity'] * $cart['price'];
+
+                $order_product->save();
+            }
+        }
+
+        $request->session()->flash('success', 'Thanks for your order.');
     }
 
     // SSL Commerze Sandbox
@@ -158,7 +198,7 @@ class CheckoutController extends Controller
         if ($order->save()) {
             $request->session()->flash('failed', 'Cancelled to connect with SSLCOMMERZ');
 
-            return redirect()->route('profile', $order->customer_id);
+            return redirect()->route('checkout');
         }
     }
 
