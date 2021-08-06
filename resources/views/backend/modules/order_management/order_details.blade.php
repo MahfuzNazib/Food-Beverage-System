@@ -35,7 +35,9 @@
                             class="badge badge-info">{{ $order_details->order_id }}</span></h3>
                     
                     <!-- Print Button -->
+                    <a href="{{ route('print-invoice', $order_details->id) }}">
                     <button class="btn btn-info btn-sm float-right">Print Invoice</button>
+                    </a>
                 </div>
                 <div class="card-body">
 

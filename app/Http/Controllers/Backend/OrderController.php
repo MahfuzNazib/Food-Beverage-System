@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -61,5 +62,25 @@ class OrderController extends Controller
     public function order_details($id){
         $order_details = Order::with('order_products')->find($id);
         return view('backend.modules.order_management.order_details', compact('order_details'));
+    }
+
+    // Print Order Invoice
+    public function print_invoice($id){
+        $pdf_style = '<style>
+            *{
+                font-size:15px;
+            }
+            table,td, th {
+                border: 1px solid black;
+                border-collapse: collapse;
+                width:100%;
+            }
+        </style>';
+        $title = 'Invoice';
+        $order_details = Order::with('order_products')->find($id);
+        $pdf = PDF::loadView('backend.modules.order_management.print_invoice',compact('order_details','pdf_style','title'));
+        $pdf->setPaper('A4', 'potrait');
+        $name = "Invoice".$order_details->order_id.".pdf";
+        return $pdf->stream($name, array("Attachment" => false));
     }
 }

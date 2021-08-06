@@ -17,4 +17,6 @@ class OrderProducts extends Model
         'is_delivered',
         'is_active',
     ];
+
+    
 }
