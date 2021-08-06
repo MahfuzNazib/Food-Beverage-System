@@ -40,10 +40,51 @@
                             <table class="table table-bordered product-datatable" id="datatable">
                                 <thead>
                                     <th>ID</th>
+                                    <th>Thumbnail</th>
                                     <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Offer</th>
+                                    <th>IsFeatured</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </thead>
+
+                                <tbody>
+                                    @foreach($products as $product)
+                                        <tr>
+                                            <td>{{ $product->id }}</td>
+                                            <td>
+                                                <img src="{{ asset('frontend/images/thumbnails/'.$product->thumbnail) }}" height="100px" width="100px">
+                                            </td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->price }}</td>
+                                            <td>
+                                                @if($product->offer_status == 1)
+                                                <span class="badge badge-success">Yes</span>
+                                                @else
+                                                <span class="badge badge-danger">No</span>
+                                                @endif
+                                            </td>
+                                            <td> 
+                                                @if($product->is_featured == 1)
+                                                <span class="badge badge-success">Yes</span>
+                                                @else
+                                                <span class="badge badge-danger">No</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($product->is_active == 1)
+                                                <span class="badge badge-success">Active</span>
+                                                @else
+                                                <span class="badge badge-danger">Inactive</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-info btn-sm">View</button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -71,38 +112,4 @@
 <script src="{{ asset('argon/js/datatable/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('argon/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
 
-<script>
-    $(function () {
-        $('.product-datatable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('product.data') }}",
-            order: [
-                [0, 'Desc']
-            ],
-            columns: [{
-                    data: 'id',
-                    name: 'id'
-                },
-                
-                
-                {
-                    data:'name',
-                    name:'name'
-                },
-
-                {
-                    data:'is_active',
-                    name:'is_active'
-                },
-                
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                },
-            ]
-        });
-    });
-</script>
 @endsection

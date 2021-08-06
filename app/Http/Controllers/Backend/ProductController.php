@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         if (can('product')) {
-            $products = Product::select('id', 'slug', 'name', 'thumbnail', 'is_featured', 'is_active')->get();
+            $products = Product::all();
             return view('backend.modules.product_management.index', compact('products'));
         } else {
             return view('errors.404');
