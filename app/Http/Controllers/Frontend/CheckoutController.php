@@ -14,22 +14,25 @@ class CheckoutController extends Controller
     public function checkout(Request $request)
     {
         $cart = $request->session()->get('cart');
-
         return view('frontend.pages.checkout');
     }
 
     // Place Order
     public function place_order(Request $request)
     {
+        $user = auth()->user();
+        
         $cart = $request->session()->get('cart');
 
         $order = new Order();
         $order->order_id = rand(00000000, 99999999);
-        if (auth('web')->user()->id) {
-            $order->customer_id = auth('web')->user()->id;
-        } else {
-            $order->customer_id = 'null';
+
+        if($user){
+            $order->customer_id = $user->id;
+        }else{
+            $order->customer_id = null;
         }
+
         $order->name = $request->name;
         $order->email = $request->email;
         $order->phone = $request->phone;
@@ -37,6 +40,7 @@ class CheckoutController extends Controller
         $order->note = $request->note;
         $order->shipping_address = $request->shipping_address;
         $order->amount = 200;
+        $order->payble_amount = 200;
         if ($request->paid_by == 'Online') {
             return $this->sslCommerz($request, $order);
         } else {

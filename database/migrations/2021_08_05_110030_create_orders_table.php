@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('order_id');
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('customer_id')->nullable();
             $table->unsignedBigInteger('outlet_id')->nullable();
             $table->string('name');
             $table->string('phone');
@@ -28,6 +28,7 @@ class CreateOrdersTable extends Migration
             $table->double('amount');
             $table->double('discount_amount')->default(0);
             $table->double('amount_after_discount')->default(0);
+            $table->double('payble_amount');
             $table->unsignedBigInteger('coupon_id')->nullable();
             $table->enum('paid_by', ['Cash', 'Online']);
             $table->json('payment_initiation_server_response')->nullable();
