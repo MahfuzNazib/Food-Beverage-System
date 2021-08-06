@@ -36,6 +36,7 @@ class CreateOrdersTable extends Migration
             $table->json('payment_validation_server_response')->nullable();
             $table->enum('order_status', ['Pending', 'OnProcess','Shipped', 'Delivered', 'Cancelled'])->default('Pending');
             $table->enum('payment_status', ['Pending', 'Success'])->default('Pending');
+            $table->boolean('is_verified')->default(false);
             $table->boolean('is_delivered')->default(false);
             $table->boolean('is_active')->default(true);
             $table->timestamps();

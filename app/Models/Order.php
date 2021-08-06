@@ -32,4 +32,9 @@ class Order extends Model
         'is_delivered',
         'is_active',
     ];
+
+    public function order_products()
+    {
+        return $this->hasMany(OrderProducts::class);
+    }
 }

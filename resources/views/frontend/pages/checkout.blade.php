@@ -137,7 +137,7 @@
                             <tr class="text-bold">
                                 <td>Total Payble</td>
                                 <td class="float-right"><span id="payble">{{ $total_amount }}</span> BDT</td>
-                                <input type="hidden" name="payble_amount" id="payble_amount">
+                                <input type="hidden" name="payble_amount" id="payble_amount" value="{{ $total_amount }}">
                             </tr>
 
                         </table>

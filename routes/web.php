@@ -33,6 +33,7 @@ Route::group(['prefix' => 'Dashboard', 'middleware' => 'auth'], function () {
 	require_once 'backend/attribute_management.php';
 	require_once 'backend/attribute_category_management.php';
 	require_once 'backend/product_management.php';
+	require_once 'backend/order_management.php';
 
 });
 
