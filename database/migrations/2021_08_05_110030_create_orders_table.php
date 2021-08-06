@@ -25,6 +25,7 @@ class CreateOrdersTable extends Migration
             $table->string('shipping_charge')->nullable();
             $table->string('shipping_address')->nullable();
             $table->string('note')->nullable();
+            $table->string('pickup_time')->nullable();
             $table->double('amount');
             $table->double('discount_amount')->default(0);
             $table->double('amount_after_discount')->default(0);

@@ -98,7 +98,32 @@ class SubModuleSeeder extends Seeder
             ],
             // Product End. Module ID 3
 
-
+            // Order Start. Module ID 4
+            [
+                'id' => 10,
+                'name' => 'Order List',
+                'key' => 'order_list',
+                'position' => 1,
+                'route' => 'order.index',
+                'module_id' => 4,
+            ],
+            [
+                'id' => 11,
+                'name' => 'Delivered Orders',
+                'key' => 'delivered_orders',
+                'position' => 2,
+                'route' => 'order.index',
+                'module_id' => 4,
+            ],
+            [
+                'id' => 12,
+                'name' => 'Undelivered Orders',
+                'key' => 'undelivered_orders',
+                'position' => 3,
+                'route' => 'order.index',
+                'module_id' => 4,
+            ],
+            // Order End. Module ID 5
         ]);
     }
 }

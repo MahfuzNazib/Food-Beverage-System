@@ -97,6 +97,33 @@ class PermissionSeeder extends Seeder
             ],
             // Product Permission End
 
+            // Order Permission Start
+            [
+                'id' => 13,
+                'key' => 'order_management',
+                'display_name' => 'Order Management',
+                'module_id' => 4,
+            ],
+            [
+                'id' => 14,
+                'key' => 'order_list',
+                'display_name' => 'Order List',
+                'module_id' => 4,
+            ],
+            [
+                'id' => 15,
+                'key' => 'delivered_orders',
+                'display_name' => 'Delivered Orders',
+                'module_id' => 4,
+            ],
+            [
+                'id' => 16,
+                'key' => 'undelivered_orders',
+                'display_name' => 'Undelivered Orders',
+                'module_id' => 4,
+            ],
+            // Order Permission End
+
         ]);
     }
 }

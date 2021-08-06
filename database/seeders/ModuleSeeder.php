@@ -44,17 +44,8 @@ class ModuleSeeder extends Seeder
 
             [
                 'id' => 4,
-                'name' => 'Offer Management',
-                'key' => 'offer_management',
-                'icon' => 'ni ni-money-coins',
-                'position' => 4,
-                'route' => null,
-            ],
-
-            [
-                'id' => 5,
                 'name' => 'Order Management',
-                'key' => 'Order_management',
+                'key' => 'order_management',
                 'icon' => 'ni ni-single-copy-04',
                 'position' => 5,
                 'route' => null,
