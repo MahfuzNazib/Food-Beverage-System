@@ -92,10 +92,10 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach($order_details->order_products as $product)
+                                    @foreach($order_products as $product)
                                     <tr>
-                                        <td>01</td>
-                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $product->product->name }}</td>
                                         <td>{{ $product->unit_price }}</td>
                                         <td>{{ $product->product_quantity }}</td>
                                         <td>{{ $product->total_amount }}</td>

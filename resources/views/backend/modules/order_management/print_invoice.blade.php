@@ -68,10 +68,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($order_details->order_products as $product)
+                    @foreach($order_products as $product)
                     <tr>
                         <td style="padding: 8px; text-align: center; width: 10px;">{{ $loop->index + 1}}</td>
-                        <td style="padding: 8px; text-align: center; width: 200px !important;">{{ $product->product_id}}
+                        <td style="padding: 8px; text-align: center; width: 200px !important;">{{ $product->product->name}}
                         </td>
                         <td style="padding: 8px; text-align: center; width: 20px">{{$product->unit_price}}</td>
                         <td style="padding: 8px; text-align: center;width: 5px">{{ $product->product_quantity }}</td>

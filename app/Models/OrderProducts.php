@@ -18,5 +18,8 @@ class OrderProducts extends Model
         'is_active',
     ];
 
-    
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
