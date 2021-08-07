@@ -19,41 +19,42 @@
                 <span style="font-size: 20px;">Bangladesh</span><br>
             </div><br><br>
         </div>
-        <div class="row">
-            <div class="col-md-6" style="width: 50%; display: block;">
-                <table border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td width="60%">Order ID</td>
-                        <td>: {{ $order_details->order_id }}</td>
-                    </tr>
-                    <tr>
-                        <td>Order Status</td>
-                        <td>: {{ $order_details->order_status }}</td>
-                    </tr>
-                    <tr>
-                        <td>Payment Status</td>
-                        <td>: {{ $order_details->payment_status }}</td>
-                    </tr>
-                </table>
-            </div>
 
-            <div class="col-md-6" style="width: 50%; display: block;">
-                <table style="width=" 100%>
-                    <tr>
-                        <td width="50%">CustomerName</td>
-                        <td>: {{ $order_details->name }}</td>
-                    </tr>
-                    <tr>
-                        <td>Phone</td>
-                        <td>: {{ $order_details->phone }}</td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>: {{ $order_details->email }}</td>
-                    </tr>
-                </table>
+        <!-- Order ID And Customer Name Row Start-->
+        <div class="row">
+            <div style="font-size:18px;">
+                <span>Order ID</span>
+                <span style="margin-left: 20%;"> : {{ $order_details->order_id }}</span>
+
+                <span style="margin-left: 10%;">Customer Name</span>
+                <span style="margin-left: 2%;"> : {{ $order_details->name }}</span>
             </div>
         </div>
+        <!-- Order ID And Customer Name Row End-->
+
+        <!-- Order Status And Customer Phone Row Start-->
+        <div class="row">
+            <div style="font-size:18px;">
+                <span>Order Status</span>
+                <span style="margin-left: 16%;">&nbsp; : {{ $order_details->order_status }}</span>
+
+                <span style="margin-left: 12%;">Phone</span>
+                <span style="margin-left: 10%;">&nbsp;&nbsp; : {{ $order_details->phone }}</span>
+            </div>
+        </div>
+        <!-- Order Status And Customer Phone Row End-->
+
+        <!-- Payment Status And Customer Email Row Start-->
+        <div class="row">
+            <div style="font-size:18px;">
+                <span>Payment Status</span>
+                <span style="margin-left: 13%;">&nbsp; : {{ $order_details->payment_status }}</span>
+
+                <span style="margin-left: 12%;">Email</span>
+                <span style="margin-left: 10%;">&nbsp;&nbsp;&nbsp; : {{ $order_details->email }}</span>
+            </div>
+        </div>
+        <!-- Payment Status And Customer Email Row End-->
         <br><br><br>
         <!-- /.card-header -->
         <div class="card-body" id="ledger_view">
