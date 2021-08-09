@@ -126,10 +126,21 @@ class CheckoutController extends Controller
             'tran_id' => $order->refresh()->id,
             'currency' => 'BDT',
             'product_category' => 'cart Amount Pay',
-            'success_url' => 'http://127.0.0.1:8000/sslcommerz/success',
-            'fail_url' => 'http://127.0.0.1:8000/sslcommerz/failed',
-            'cancel_url' => 'http://127.0.0.1:8000/sslcommerz/cancel',
-            'ipn_url' => 'http://127.0.0.1:8000/sslcommerz/ipn',
+
+            // For Local Development 
+
+            // 'success_url' => 'http://127.0.0.1:8000/sslcommerz/success',
+            // 'fail_url' => 'http://127.0.0.1:8000/sslcommerz/failed',
+            // 'cancel_url' => 'http://127.0.0.1:8000/sslcommerz/cancel',
+            // 'ipn_url' => 'http://127.0.0.1:8000/sslcommerz/ipn',
+
+            // For Server
+
+            'success_url' => 'http://xyzfoo.herokuapp.com/sslcommerz/success',
+            'fail_url' => 'http://xyzfoo.herokuapp.com/sslcommerz/failed',
+            'cancel_url' => 'http://xyzfoo.herokuapp.com/sslcommerz/cancel',
+            'ipn_url' => 'http://xyzfoo.herokuapp.com/sslcommerz/ipn',
+
             'emi_option' => 0,
             'cus_name' => $order->name,
             'cus_email' => 'testgmail@gmail.com',
