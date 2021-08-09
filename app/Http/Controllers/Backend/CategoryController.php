@@ -83,7 +83,7 @@ class CategoryController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required|unique:categories',
                 'position' => 'required|unique:categories',
-                'image' => 'required|dimensions:min_width=371,max_width=371,min_height=172,max_height=172',
+                'image' => 'required|dimensions:min_width=370,max_width=375,min_height=170,max_height=192',
             ]);
 
             if ($validator->fails()) {
