@@ -3,7 +3,6 @@
 /public/storage
 /storage/*.key
 /vendor
-/public/vendor/unisharp
 /public/frontend/images/products
 /public/frontend/images/brands
 /public/frontend/images/categories
